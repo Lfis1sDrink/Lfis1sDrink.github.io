@@ -1,48 +1,99 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <link rel="alternate icon" type="image/png" href="/img/favicon.png">
-    <title>Hexo | </title>
+<html lang="en">
+  <head>
     
-<link rel="stylesheet" href="/css/reset.css">
 
     
-<link rel="stylesheet" href="/css/style.css">
-
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
     
-<link rel="stylesheet" href="/css/markdown.css">
 
-    
-<link rel="stylesheet" href="/css/fonts.css">
+<meta charset="utf-8" >
 
-<meta name="generator" content="Hexo 7.3.0"></head>
-    <body>
-        <div class="paper">
-            <div class="paper-main">
-                
-                    <div class="post-header">
-    <a class="logo" href="/">Hexo</a>
-    <a class="go-home" href="/">
-        <svg width="8" height="14" viewBox="0 0 8 14">
-            <path d="M7 1L1 7l6 6" stroke="#000" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </a>
+<title>Python二维数组创建内存地址相同的问题</title>
+<meta name="keywords" content="Python二维数组创建内存地址相同的问题, Hexo">
+<meta name="description" content="1. 这段代码并不工作，帮我找出问题：12345678910111213def input_list():    return list(map(int, input().split()))n,m = input_list()a = []f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Python二维数组创建内存地址相同的问题">
+<meta property="og:description" content="1. 这段代码并不工作，帮我找出问题：12345678910111213def input_list():    return list(map(int, input().split()))n,m = input_list()a = []f">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://example.com">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://example.com">
+        <h1 class="site-title">Hexo</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
 </div>
-                
-                <div class="post-main">
 
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
     
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
     
-        <div class="post-main-title">
-            Python二维数组创建内存地址相同的问题
-        </div>
-        <div class="post-meta">
-            2025-01-16
-        </div>
-        <div class="post-md">
-            <h1 id="1-这段代码并不工作，帮我找出问题："><a href="#1-这段代码并不工作，帮我找出问题：" class="headerlink" title="1. 这段代码并不工作，帮我找出问题："></a>1. 这段代码并不工作，帮我找出问题：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line"></span><br><span class="line">n,m = input_list()</span><br><span class="line">a = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    a.append(input_list())</span><br><span class="line">b = [[<span class="number">0</span>] * m] * n</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,m):</span><br><span class="line">        b[i][j] = a[i][j]</span><br></pre></td></tr></table></figure>
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">Python二维数组创建内存地址相同的问题</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-01-16</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              Python学习笔记
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h1 id="1-这段代码并不工作，帮我找出问题："><a href="#1-这段代码并不工作，帮我找出问题：" class="headerlink" title="1. 这段代码并不工作，帮我找出问题："></a>1. 这段代码并不工作，帮我找出问题：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line"></span><br><span class="line">n,m = input_list()</span><br><span class="line">a = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    a.append(input_list())</span><br><span class="line">b = [[<span class="number">0</span>] * m] * n</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,m):</span><br><span class="line">        b[i][j] = a[i][j]</span><br></pre></td></tr></table></figure>
 <p>你提供的代码中存在一个潜在的问题，主要是在创建二维数组 <code>b</code> 的方式上。具体来说：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = [[<span class="number">0</span>] * m] * n</span><br></pre></td></tr></table></figure>
 
@@ -70,31 +121,81 @@
 </ul>
 
         </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#1-%E8%BF%99%E6%AE%B5%E4%BB%A3%E7%A0%81%E5%B9%B6%E4%B8%8D%E5%B7%A5%E4%BD%9C%EF%BC%8C%E5%B8%AE%E6%88%91%E6%89%BE%E5%87%BA%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="top-box-text">1. 这段代码并不工作，帮我找出问题：</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="top-box-text">如何解决这个问题：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="top-box-text">修改后的完整代码：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="top-box-text">解释：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="top-box-text">示例：</span></a></li></ol></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
 
     
+      <div class="next-post">
+        <a class="purple-link" href="/2025/01/16/hello-world/">
+          <h3 class="post-title">
+            下一篇：Hello World
+          </h3>
+        </a>
+      </div>
+    
+  </div>
 
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/f-dong" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
 </div>
-                <div class="footer">
-    <span>Copyright © 2022 Hexo</span>
-    <span>Theme Designed By <a target="_blank" href="https://zheli.design/one-paper">這李設計</a></span>
-</div>
+</footer>
 
 
-<link rel="stylesheet" href="/css/a11y-dark.min.css">
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
 
 
-<script src="/js/highlight.min.js"></script>
 
 
-<script src="/js/highlightjs-line-numbers.js"></script>
 
 
-<script>
-    hljs.initHighlightingOnLoad();
-    hljs.initLineNumbersOnLoad();
-</script>
-
-            </div>
-        </div>
-    </body>
+  </body>
 </html>
+

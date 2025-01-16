@@ -9,14 +9,14 @@
 
 <meta charset="utf-8" >
 
-<title>Python二维数组创建内存地址相同的问题</title>
-<meta name="keywords" content="Python二维数组创建内存地址相同的问题, Hexo">
-<meta name="description" content="1. 这段代码并不工作，帮我找出问题：12345678910111213def input_list():    return list(map(int, input().split()))n,m = input_list()a = []f">
+<title>[Python学习笔记]二维数组创建内存地址相同的问题</title>
+<meta name="keywords" content="[Python学习笔记]二维数组创建内存地址相同的问题, Hexo">
+<meta name="description" content="创建大小相同的不同列表要用生成器列表直接进行 * 运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。12345678910111213# 问题代码：def input_list():    return list(m">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta property="og:title" content="Python二维数组创建内存地址相同的问题">
-<meta property="og:description" content="1. 这段代码并不工作，帮我找出问题：12345678910111213def input_list():    return list(map(int, input().split()))n,m = input_list()a = []f">
+<meta property="og:title" content="[Python学习笔记]二维数组创建内存地址相同的问题">
+<meta property="og:description" content="创建大小相同的不同列表要用生成器列表直接进行 * 运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。12345678910111213# 问题代码：def input_list():    return list(m">
 
 <link rel="shortcut icon" href="/favicon.ico">
 <link rel="stylesheet" href="/style/main.css">
@@ -76,7 +76,7 @@
   <div class="content-container">
     <div class="post-detail">
       
-      <h2 class="post-title">Python二维数组创建内存地址相同的问题</h2>
+      <h2 class="post-title">[Python学习笔记]二维数组创建内存地址相同的问题</h2>
       <div class="post-info post-detail-info">
         <span><i class="icon icon-calendar-outline"></i> 2025-01-16</span>
         
@@ -93,8 +93,8 @@
       </div>
       <div class="post-content-wrapper">
         <div class="post-content">
-          <h1 id="1-这段代码并不工作，帮我找出问题："><a href="#1-这段代码并不工作，帮我找出问题：" class="headerlink" title="1. 这段代码并不工作，帮我找出问题："></a>1. 这段代码并不工作，帮我找出问题：</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line"></span><br><span class="line">n,m = input_list()</span><br><span class="line">a = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    a.append(input_list())</span><br><span class="line">b = [[<span class="number">0</span>] * m] * n</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,m):</span><br><span class="line">        b[i][j] = a[i][j]</span><br></pre></td></tr></table></figure>
-<p>你提供的代码中存在一个潜在的问题，主要是在创建二维数组 <code>b</code> 的方式上。具体来说：</p>
+          <h2 id="创建大小相同的不同列表要用生成器"><a href="#创建大小相同的不同列表要用生成器" class="headerlink" title="创建大小相同的不同列表要用生成器"></a>创建大小相同的不同列表要用生成器</h2><h3 id="列表直接进行-运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。"><a href="#列表直接进行-运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。" class="headerlink" title="列表直接进行 * 运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。"></a>列表直接进行 * 运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 问题代码：</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">input_list</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line"></span><br><span class="line">n,m = input_list()</span><br><span class="line">a = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    a.append(input_list())</span><br><span class="line">b = [[<span class="number">0</span>] * m] * n</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,m):</span><br><span class="line">        b[i][j] = a[i][j]</span><br></pre></td></tr></table></figure>
+<p>以下是GPT的回答：<br>你提供的代码中存在一个潜在的问题，主要是在创建二维数组 <code>b</code> 的方式上。具体来说：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = [[<span class="number">0</span>] * m] * n</span><br></pre></td></tr></table></figure>
 
 <p>这行代码会创建一个包含 <code>n</code> 个元素的列表，其中每个元素是一个列表 <code>[0] * m</code>。然而，这样创建的每一行（即 <code>b[i]</code>）都指向同一个内存位置。因此，修改 <code>b[i][j]</code> 时，实际上会影响所有的行，因为它们共享相同的内存引用。</p>
@@ -123,7 +123,7 @@
         </div>
           
         <div class="top-div">
-          <ol class="top-box"><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#1-%E8%BF%99%E6%AE%B5%E4%BB%A3%E7%A0%81%E5%B9%B6%E4%B8%8D%E5%B7%A5%E4%BD%9C%EF%BC%8C%E5%B8%AE%E6%88%91%E6%89%BE%E5%87%BA%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="top-box-text">1. 这段代码并不工作，帮我找出问题：</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="top-box-text">如何解决这个问题：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="top-box-text">修改后的完整代码：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="top-box-text">解释：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="top-box-text">示例：</span></a></li></ol></li></ol></li></ol>
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E5%88%9B%E5%BB%BA%E5%A4%A7%E5%B0%8F%E7%9B%B8%E5%90%8C%E7%9A%84%E4%B8%8D%E5%90%8C%E5%88%97%E8%A1%A8%E8%A6%81%E7%94%A8%E7%94%9F%E6%88%90%E5%99%A8"><span class="top-box-text">创建大小相同的不同列表要用生成器</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%88%97%E8%A1%A8%E7%9B%B4%E6%8E%A5%E8%BF%9B%E8%A1%8C-%E8%BF%90%E7%AE%97%E5%90%8E%E4%B8%8D%E4%BC%9A%E5%8F%98%E6%88%90%E4%B8%8D%E5%90%8C%E7%9A%84%E5%A4%9A%E4%B8%AA%E5%88%97%E8%A1%A8%EF%BC%8C%E8%80%8C%E6%98%AF%E7%9B%B8%E5%90%8C%E5%88%97%E8%A1%A8%E7%9A%84%E5%87%A0%E4%BB%BD%E6%8B%B7%E8%B4%9D%EF%BC%8C%E5%85%B1%E4%BA%AB%E5%90%8C%E4%B8%80%E4%B8%AA%E5%86%85%E5%AD%98%E5%9C%B0%E5%9D%80%E3%80%82"><span class="top-box-text">列表直接进行 * 运算后不会变成不同的多个列表，而是相同列表的几份拷贝，共享同一个内存地址。</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="top-box-text">如何解决这个问题：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E%E7%9A%84%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="top-box-text">修改后的完整代码：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E8%A7%A3%E9%87%8A%EF%BC%9A"><span class="top-box-text">解释：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="top-box-text">示例：</span></a></li></ol></li></ol>
         </div>
           
       </div>

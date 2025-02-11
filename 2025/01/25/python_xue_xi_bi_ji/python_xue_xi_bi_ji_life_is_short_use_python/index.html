@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[Python学习笔记]Life is short, use Python</title>
+<meta name="keywords" content="[Python学习笔记]Life is short, use Python, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="Lanqiao OJ 155 最大距离在数列 a1, a2, ⋯, an 中，定义两个元素 ai 和 aj 的距离为 |i - j| + |ai - aj|，即元素下标的距离加上元素值的差的绝对值，其中 |x| 表示 x 的绝对值。给定一个">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[Python学习笔记]Life is short, use Python">
+<meta property="og:description" content="Lanqiao OJ 155 最大距离在数列 a1, a2, ⋯, an 中，定义两个元素 ai 和 aj 的距离为 |i - j| + |ai - aj|，即元素下标的距离加上元素值的差的绝对值，其中 |x| 表示 x 的绝对值。给定一个">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[Python学习笔记]Life is short, use Python</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-01-25</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              Python学习笔记
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="Lanqiao-OJ-155-最大距离"><a href="#Lanqiao-OJ-155-最大距离" class="headerlink" title="Lanqiao OJ 155 最大距离"></a>Lanqiao OJ 155 最大距离</h2><p>在数列 <code>a1, a2, ⋯, an</code> 中，定义两个元素 <code>ai</code> 和 <code>aj</code> 的距离为 <code>|i - j| + |ai - aj|</code>，即元素下标的距离加上元素值的差的绝对值，其中 <code>|x|</code> 表示 <code>x</code> 的绝对值。给定一个数列，请问找出元素之间最大的元素距离。</p>
+<h3 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h3><p>输入的第一行包含一个整数 <code>n</code>。</p>
+<p>第二行包含 <code>n</code> 个整数 <code>a1, a2, ⋯, an</code>，相邻的整数间用空格分隔，表示给定的数列。</p>
+<p>其中，<code>2 ≤ n ≤ 1000</code>，<code>0 ≤ 数列中的数 ≤ 10^4</code>。</p>
+<h3 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h3><p>输出一行包含一个整数，表示答案。</p>
+<p>输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">9 4 2 4 7</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">l = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>,<span class="built_in">input</span>().split()))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">max</span>(<span class="built_in">abs</span>(i - j) + <span class="built_in">abs</span>(l[i] - l[j]) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n) <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(i,n)))</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#Lanqiao-OJ-155-%E6%9C%80%E5%A4%A7%E8%B7%9D%E7%A6%BB"><span class="top-box-text">Lanqiao OJ 155 最大距离</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E8%BE%93%E5%85%A5%E6%8F%8F%E8%BF%B0"><span class="top-box-text">输入描述</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E8%BE%93%E5%87%BA%E6%8F%8F%E8%BF%B0"><span class="top-box-text">输出描述</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E9%A2%98%E8%A7%A3"><span class="top-box-text">题解</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/01/25/python_xue_xi_bi_ji/python_xue_xi_bi_ji_guan_yu_zi_fu_chuan_cao_zuo_he_zheng_ze_pi_pei/">
+          <h3 class="post-title">
+            下一篇：[Python学习笔记]关于字符串操作和正则匹配
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

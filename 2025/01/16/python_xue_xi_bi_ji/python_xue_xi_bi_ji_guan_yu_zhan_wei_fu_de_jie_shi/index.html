@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[Python学习笔记]关于占位符_的解释</title>
+<meta name="keywords" content="[Python学习笔记]关于占位符_的解释, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="_是什么呢？ 为什么可以写for _ in range(n)在 Python 中，_ 是一个惯用的变量名，通常用于表示 不关心的值 或 占位符。当你在 for 循环或者其他地方使用 _ 时，意味着你不需要这个变量的实际值，而只是希望执行相应">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[Python学习笔记]关于占位符_的解释">
+<meta property="og:description" content="_是什么呢？ 为什么可以写for _ in range(n)在 Python 中，_ 是一个惯用的变量名，通常用于表示 不关心的值 或 占位符。当你在 for 循环或者其他地方使用 _ 时，意味着你不需要这个变量的实际值，而只是希望执行相应">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[Python学习笔记]关于占位符_的解释</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-01-16</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              Python学习笔记
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h2 id="是什么呢？-为什么可以写for-in-range-n"><a href="#是什么呢？-为什么可以写for-in-range-n" class="headerlink" title="_是什么呢？ 为什么可以写for _ in range(n)"></a>_是什么呢？ 为什么可以写for _ in range(n)</h2><p>在 Python 中，<code>_</code> 是一个惯用的变量名，通常用于表示 <strong>不关心的值</strong> 或 <strong>占位符</strong>。当你在 <code>for</code> 循环或者其他地方使用 <code>_</code> 时，意味着你不需要这个变量的实际值，而只是希望执行相应的操作。</p>
+<h3 id="为什么可以写-for-："><a href="#为什么可以写-for-：" class="headerlink" title="为什么可以写 for _："></a>为什么可以写 <code>for _</code>：</h3><p>在 <code>for</code> 循环中，如果你只关心循环的次数，而不关心每次迭代的变量值，就可以使用 <code>_</code> 来代替不需要的循环变量。这是 Python 的一种约定俗成的写法，用来表明这个变量的值不会被使用。</p>
+<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4><p>假设我们要重复执行某个操作 5 次，但我们并不需要每次迭代的索引值，可以这样写：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这段代码会输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br><span class="line">Hello</span><br></pre></td></tr></table></figure>
+
+<p><strong>解释：</strong></p>
+<ul>
+<li><code>range(5)</code> 会生成一个包含 0, 1, 2, 3, 4 的序列，但我们并不需要使用这些数字。</li>
+<li><code>_</code> 在这里作为循环变量，它的值被丢弃，不会被使用，只是为了执行循环的 5 次。</li>
+</ul>
+<h3 id="为什么使用-："><a href="#为什么使用-：" class="headerlink" title="为什么使用 _："></a>为什么使用 <code>_</code>：</h3><ol>
+<li><strong>语义明确</strong>：使用 <code>_</code> 表明你不关心这个值，而仅仅是执行一个操作指定次数。</li>
+<li><strong>避免警告</strong>：如果你使用其他名字（如 <code>i</code> 或 <code>j</code>），但实际上并不使用它，某些代码检查工具可能会警告你这个变量没有被使用。使用 <code>_</code> 可以避免这些警告。</li>
+<li><strong>Python 的习惯</strong>：<code>_</code> 是 Python 中的一个约定符号，广泛用于不需要值的情况。</li>
+</ol>
+<h3 id="其他例子："><a href="#其他例子：" class="headerlink" title="其他例子："></a>其他例子：</h3><ol>
+<li><p><strong>忽略返回值</strong>：<br>假设一个函数返回多个值，但你只关心其中的一部分，可以用 <code>_</code> 来忽略不需要的返回值：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x, _, z = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x, z)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 3</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们忽略了第二个值 <code>2</code>，只关心第一个和第三个值。</p>
+</li>
+<li><p><strong>多个循环变量</strong>：<br>有时我们会使用 <code>_</code> 来忽略某些返回的元素，如循环中的多重值解包：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _, value <span class="keyword">in</span> <span class="built_in">enumerate</span>([<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>]):</span><br><span class="line">    <span class="built_in">print</span>(value)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line">b</span><br><span class="line">c</span><br></pre></td></tr></table></figure>
+<p>在这里，我们使用 <code>enumerate()</code> 获取索引和值，但我们并不关心索引，因此用 <code>_</code> 来忽略它。</p>
+</li>
+</ol>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><ul>
+<li><code>_</code> 是 Python 中的惯用符号，表示不关心的值或占位符。</li>
+<li>在 <code>for _ in range(n)</code> 中，<code>_</code> 只是一个变量名，表示我们不关心循环的每个值，只关心循环的次数。</li>
+<li>使用 <code>_</code> 可以提高代码的可读性，避免不必要的变量警告。</li>
+</ul>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%98%AF%E4%BB%80%E4%B9%88%E5%91%A2%EF%BC%9F-%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E5%86%99for-in-range-n"><span class="top-box-text">_是什么呢？ 为什么可以写for _ in range(n)</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E5%86%99-for-%EF%BC%9A"><span class="top-box-text">为什么可以写 for _：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-%EF%BC%9A"><span class="top-box-text">为什么使用 _：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%85%B6%E4%BB%96%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="top-box-text">其他例子：</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E6%80%BB%E7%BB%93%EF%BC%9A"><span class="top-box-text">总结：</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/01/16/python_xue_xi_bi_ji/python_xue_xi_bi_ji_er_wei_shu_zu_chuang_jian_nei_cun_di_zhi_xiang_tong_de_wen_ti/">
+          <h3 class="post-title">
+            下一篇：[Python学习笔记]二维数组创建内存地址相同的问题
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[文章归档]DeepSeek-V3 高效训练关键技术分析</title>
+<meta name="keywords" content="[文章归档]DeepSeek-V3 高效训练关键技术分析, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="原始URL: http://mp.weixin.qq.com/s?__biz&#x3D;MzIzOTU0NTQ0MA&#x3D;&#x3D;&amp;mid&#x3D;2247545593&amp;idx&#x3D;1&amp;sn&#x3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[文章归档]DeepSeek-V3 高效训练关键技术分析">
+<meta property="og:description" content="原始URL: http://mp.weixin.qq.com/s?__biz&#x3D;MzIzOTU0NTQ0MA&#x3D;&#x3D;&amp;mid&#x3D;2247545593&amp;idx&#x3D;1&amp;sn&#x3">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[文章归档]DeepSeek-V3 高效训练关键技术分析</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-02-12</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/%E6%96%87%E7%AB%A0%E5%BD%92%E6%A1%A3/">
+              文章归档
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91%E5%BC%80%E5%8F%91%E8%80%85/">
+              阿里云开发者
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p><strong>原始URL</strong>: <a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247545593&idx=1&sn=e4d7c64e78101641689739d80d08f836&chksm=e84847f221e955a27468abec12401ee6de855d87f179c50fc68261574a4dfa36c37de7c4723a&&scene=1&srcid=0211vlTqjA4RjeaE3dVMO4Ex&sharer_shareinfo=e650974330b247da21d7f04574e3485e&sharer_shareinfo_first=e650974330b247da21d7f04574e3485e">http://mp.weixin.qq.com/s?__biz&#x3D;MzIzOTU0NTQ0MA&#x3D;&#x3D;&amp;mid&#x3D;2247545593&amp;idx&#x3D;1&amp;sn&#x3D;e4d7c64e78101641689739d80d08f836&amp;chksm&#x3D;e84847f221e955a27468abec12401ee6de855d87f179c50fc68261574a4dfa36c37de7c4723a&amp;&amp;scene&#x3D;1&amp;srcid&#x3D;0211vlTqjA4RjeaE3dVMO4Ex&amp;sharer_shareinfo&#x3D;e650974330b247da21d7f04574e3485e&amp;sharer_shareinfo_first&#x3D;e650974330b247da21d7f04574e3485e</a><br><strong>抓取时间</strong>: 2025-02-12 18:01:39<br><strong>本地化图片</strong>: 8张</p>
+<p>Title: DeepSeek-V3 高效训练关键技术分析</p>
+<p>URL Source: <a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247545593&idx=1&sn=e4d7c64e78101641689739d80d08f836&chksm=e84847f221e955a27468abec12401ee6de855d87f179c50fc68261574a4dfa36c37de7c4723a&&scene=1&srcid=0211vlTqjA4RjeaE3dVMO4Ex&sharer_shareinfo=e650974330b247da21d7f04574e3485e&sharer_shareinfo_first=e650974330b247da21d7f04574e3485e">http://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247545593&amp;idx=1&amp;sn=e4d7c64e78101641689739d80d08f836&amp;chksm=e84847f221e955a27468abec12401ee6de855d87f179c50fc68261574a4dfa36c37de7c4723a&amp;&amp;scene=1&amp;srcid=0211vlTqjA4RjeaE3dVMO4Ex&amp;sharer_shareinfo=e650974330b247da21d7f04574e3485e&amp;sharer_shareinfo_first=e650974330b247da21d7f04574e3485e</a></p>
+<p>Markdown Content:<br><a class="simple-lightbox" href="/images/image_1739354498_0.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_0.png"  alt="Image 23" lazyload></a></p>
+<p>一、模型架构</p>
+<p><strong>1.1 高效的模型架构设计：多头潜在注意力 MLA 和 DeepSeekMoE 架构</strong></p>
+<p>1. 多头潜在注意力 MLA：MLA（Multi - head Latent Attention）架构与标准的MHA（Multi - head Attention）架构相比，核心是对注意力键和值进行低秩联合压缩，减少了推理时的 Key - Value（KV）缓存，减少了推理内存占用，提升了推理效率，该架构对训练过程无直接帮助，不是本文分析的重点。</p>
+<p>2. DeepSeekMoE 架构：核心是采用了更细粒度的专家分配策略，每个MoE层有1个共享专家和256个路由专家（共有58个MoE层14906个专家），每个输入Token可以激活8个路由专家，<strong>该架构可以有效利用计算资源，实现高效训练，其与标准MoE架构存在以下不同点：</strong></p>
+<p>a)专家构成：标准MoE架构的类型和分工较为宽泛，一般不会特别强调共享专家的设置，各个专家相对独立的处理不同输入数据，在处理不同类型数据特征时，专家间一般缺少专门设计的协作和共享机制；而 DeepSeekMoE 架构中的共享专家可对不同输入数据中的共性特征进行处理，在不同类型的输入数据间实现共性特征的知识共享，<strong>以便减少模型参数冗余</strong>，而路由专家则负责处理具有特定模式或特征的数据，提高模型对不同数据的适应性和处理能力。</p>
+<p>b)专家分配：标准MoE架构的专家分配策略相对比较粗放，门控网络根据输入数据进行专家选择时，对于一些复杂数据特征的区分不够精准，不能很好地将数据分配到最能处理该特征的专家；而 DeepSeekMoE 架构采用了<strong>更细粒度的专家分配策略</strong>，门控网络能够更精准地分析输入数据的特征，将其分配到最合适的专家，提升模型对于复杂数据的处理能力。</p>
+<p>c)专家激活：标准MoE架构对于输入数据激活的专家数量没有固定标准，在某些情况下输入数据可能会激活过多非必要的专家，导致计算资源的浪费；而 DeepSeekMoE 架构明确了每个输入 Token 激活8个路由专家，在保证模型处理效果的同时，<strong>避免了过度激活专家带来的计算资源浪费</strong>，提高了计算效率、降低了计算成本；在具体实现方式上，共享专家会对每个输入 Token 进行处理，以便提取通用的基本特征，而路由专家会根据输入 Token 的特征而决定是否被激活参与计算。</p>
+<p>﻿<a class="simple-lightbox" href="/images/image_1739354498_1.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_1.png"  alt="Image 24" lazyload></a></p>
+<p><strong>1.2 创新的负载均衡策略：无辅助损失负载均衡和序列级负载均衡</strong></p>
+<h4 id="1-基本概念：在MoE大模型训练过程中，输入数据会根据一定的路由规则分配到不同的专家模型进行处理，这个过程中可能会出现负载不均衡的情况，即某些专家被频繁调用，而另一些专家则很少被使用，这会导致训练效率和模型性能下降；"><a href="#1-基本概念：在MoE大模型训练过程中，输入数据会根据一定的路由规则分配到不同的专家模型进行处理，这个过程中可能会出现负载不均衡的情况，即某些专家被频繁调用，而另一些专家则很少被使用，这会导致训练效率和模型性能下降；" class="headerlink" title="1. 基本概念：在MoE大模型训练过程中，输入数据会根据一定的路由规则分配到不同的专家模型进行处理，这个过程中可能会出现负载不均衡的情况，即某些专家被频繁调用，而另一些专家则很少被使用，这会导致训练效率和模型性能下降；"></a>1. 基本概念：在MoE大模型训练过程中，输入数据会根据一定的路由规则分配到不同的专家模型进行处理，这个过程中可能会出现负载不均衡的情况，<strong>即某些专家被频繁调用，而另一些专家则很少被使用</strong>，这会导致训练效率和模型性能下降；</h4><h4 id="业界通常采用的负载均衡策略为引入专门的辅助损失函数来强制平衡专家之间的负载，例如通过惩罚专家之间的负载差异来促使模型均匀地使用各个专家，额外引入的损失函数往往会导致模型复杂度增加、训练不稳定、发生与原本训练目标不一致等问题；"><a href="#业界通常采用的负载均衡策略为引入专门的辅助损失函数来强制平衡专家之间的负载，例如通过惩罚专家之间的负载差异来促使模型均匀地使用各个专家，额外引入的损失函数往往会导致模型复杂度增加、训练不稳定、发生与原本训练目标不一致等问题；" class="headerlink" title="业界通常采用的负载均衡策略为引入专门的辅助损失函数来强制平衡专家之间的负载，例如通过惩罚专家之间的负载差异来促使模型均匀地使用各个专家，额外引入的损失函数往往会导致模型复杂度增加、训练不稳定、发生与原本训练目标不一致等问题；"></a>业界通常采用的负载均衡策略为引入专门的辅助损失函数来强制平衡专家之间的负载，例如通过惩罚专家之间的负载差异来促使模型均匀地使用各个专家，<strong>额外引入的损失函数往往会导致模型复杂度增加、训练不稳定、发生与原本训练目标不一致等问题</strong>；</h4><h4 id="除了上述基于单-Token-的负载不均问题外，一个输入序列中的-Token-在专家间的分配情况也容易出现负载不均，即同一序列中的多个-Token-可能会集中分配给某些专家。"><a href="#除了上述基于单-Token-的负载不均问题外，一个输入序列中的-Token-在专家间的分配情况也容易出现负载不均，即同一序列中的多个-Token-可能会集中分配给某些专家。" class="headerlink" title="除了上述基于单 Token 的负载不均问题外，一个输入序列中的 Token 在专家间的分配情况也容易出现负载不均，即同一序列中的多个 Token 可能会集中分配给某些专家。"></a>除了上述基于单 Token 的负载不均问题外，一个输入序列中的 Token 在专家间的分配情况也容易出现负载不均，即同一序列中的多个 Token 可能会集中分配给某些专家。</h4><p>2. 优化方法：DeepSeek-V3 采用无辅助损失负载均衡技术，通过直接在路由机制中融入负载均衡逻辑，<strong>避免了引入辅助损失函数</strong>，实现了仅通过对路由决策动态调整就实现专家负载均衡的效果；同时训练过程<strong>辅以序列级负载均衡策略</strong>，确保了每个序列内的专家负载均衡。</p>
+<p>a)无辅助损失负载均衡：DeepSeek-V3 为每个专家引入了一个可学习的偏置项，在训练过程中它会随着专家负载情况进行动态更新，当门控网络计算输入 Token 与各专家的匹配得分时，<strong>该偏置项会动态调整每个专家的匹配得分</strong>，基于得分和对各专家利用率的实时监测（例如在一定时间窗口内专家处理的 Token 数量、计算资源占用时长等），动态调整路由策略，将输入 Token 实时分配给负载较低的专家，这种方法不仅负载均衡效果好，而且避免了引入辅助损失函数带来的衍生问题。</p>
+<p>b)序列级负载均衡：DeepSeek-V3 额外增加了一个序列级负载均衡损失函数，对序列中的每个 Token 进行精细化的分析和处理，<strong>根据 Token 在序列中的位置、上下文信息等更合理地分配到各个专家</strong>（而不是仅仅基于单个 Token 的特征进行独立分配），通过这种负载均衡方案，兼顾了 Token 之间的关联性和序列的整体结构。</p>
+<p><strong>1.3 多令牌预测（MTP） 训练目标：提高训练效率和推理速度</strong></p>
+<h3 id="1-基本概念：MTP-的全称是-Multi-Token-Prediction（多令牌预测），与之对应的是-DeepSeek-V3-发布之前业界普遍使用的单令牌预测（Single-Token-Prediction，STP），STP-一次仅预测一个Token，而-MTP-可同时预测多个-Token，这一方案在训练阶段可以提升数据训练效率，在推理阶段可以实现显著加速。"><a href="#1-基本概念：MTP-的全称是-Multi-Token-Prediction（多令牌预测），与之对应的是-DeepSeek-V3-发布之前业界普遍使用的单令牌预测（Single-Token-Prediction，STP），STP-一次仅预测一个Token，而-MTP-可同时预测多个-Token，这一方案在训练阶段可以提升数据训练效率，在推理阶段可以实现显著加速。" class="headerlink" title="1. 基本概念：MTP 的全称是 Multi - Token Prediction（多令牌预测），与之对应的是 DeepSeek-V3 发布之前业界普遍使用的单令牌预测（Single - Token Prediction，STP），STP 一次仅预测一个Token，而 MTP 可同时预测多个 Token，这一方案在训练阶段可以提升数据训练效率，在推理阶段可以实现显著加速。"></a>1. 基本概念：MTP 的全称是 Multi - Token Prediction（多令牌预测），与之对应的是 DeepSeek-V3 发布之前业界普遍使用的单令牌预测（Single - Token Prediction，STP），STP 一次仅预测一个Token，而 MTP 可同时预测多个 Token，<strong>这一方案在训练阶段可以提升数据训练效率，在推理阶段可以实现显著加速</strong>。</h3><p>2. 实现方案：如 DeepSeek 论文中所展示的 MTP 架构所示，MTP 由一个主模型（Main Model）以及多个 MTP 模块（MTP Module 1、MTP Module 2 等）构成，<strong>主模型负责基础的下一个 Token 预测任务，MTP 模块则用于预测多个未来 Token</strong>，它们共同协作完成多Token 预测训练。</p>
+<p>a)输入 Token 与输出 Token：如图左下方的t1、t2、t3、t4等，是模型的输入序列；如图上方的t2、t3、t4、t5是模型预测需要匹配的真实 Token 序列，不同部分对应不同的预测任务。</p>
+<p>b)主模型（Main Model）与 MTP 模块：输入 Token 先经过嵌入层转换为向量表示，然后分别在 Main Model 和 MTP 内部进行计算，基于与目标 Token 计算得到的 Loss，指导模型更新训练参数。</p>
+<p>c)共享机制：嵌入层（Embedding Layer）和输出头（Output Head）在主模型和 MTP 模块之间共享，<strong>这种共享机制确保了模型在不同预测任务中的参数一致性，同时减少了参数数量，提高了训练效率。</strong></p>
+<p>﻿<a class="simple-lightbox" href="/images/image_1739354498_2.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_2.png"  alt="Image 25" lazyload></a></p>
+<p>3. 核心价值：MTP 不仅在推理时能够显著加速生成速度（据称生成速度可提升 1.8 倍），对于高效训练同样很有价值。</p>
+<p>a)实现高效训练：由于一次可预测多个 Token，在相同数据量的情况下，<strong>相比 STP 架构，模型可以学习到更多的信息</strong>，从而提升了数据的利用效率，使得训练更加高效。</p>
+<p>b)提升训练效果：模型可以基于对多个 Token 的预测，更合理地调整自身参数，<strong>学习到更丰富的语言模式和语义信息</strong>，有助于模型在训练中更好地收敛，提升训练效果。</p>
+<p>二、并行策略</p>
+<p><strong>2.1 高效的并行策略设计：大量使用 EP、不再使用 TP</strong></p>
+<p>1. 并行策略总结：DeepSeek-V3 的训练由 HAI-LLM 框架（DeepSeek 自研训练框架）支持，采用了<strong>16路流水线并行（PP），跨越8个节点的64路专家并行（EP），以及 ZeRO-1 数据并行（DP）</strong>，实现了充分利用计算资源，提高训练效率，减少训练时间和成本。其中 PP 和 DP 将在本节后边两个要点进行分析，此处重点分析其为何没有使用 TP。</p>
+<p>2. 使用 EP 而不是 TP：在 DeepSeek-V3 训练中，优先使用 EP 而没有使用 TP 的原因核心有以下几个方面：</p>
+<p>a)模型结构适配性：MoE 模型由多个专家网络和一个门控网络组成，<strong>EP 正好与这种结构相匹配</strong>，它可以将不同的专家分配到不同的计算单元上并行计算，让模型同时处理多个不同的任务或数据特征，<strong>提高模型的处理能力和训练效率</strong>；TP 通常用于处理大型张量的计算，不能很好地对应 MoE 模型的结构特点。</p>
+<p>b)通信成本考虑：<strong>在 EP 中不同专家之间的通信相对较少</strong>，主要的通信开销在于门控网络与专家网络之间的信息交互，以及在进行模型参数更新等操作时的一些全局通信；TP 需要在多个设备之间频繁地进行张量的切分、合并等操作，通信量会随着模型规模和数据量的增加而显著增加，降低训练效率。</p>
+<p>c)计算资源利用率：MoE 模型中的不同专家可能具有不同的计算复杂度和数据需求，<strong>EP 可以根据各个专家的特点灵活地分配计算资源</strong>，使不同性能的计算单元都能得到充分利用；TP 的资源分配方式相对单一，对于不同专家的多样性计算需求支持不佳。</p>
+<p><strong>2.2 Dualpipe 流水线并行策略：双流并行计算优化与双向流水线调度优化</strong></p>
+<p>1.双流并行计算优化：</p>
+<p>a)基本概念：如 DeepSeek 在论文中所述，在训练过程中包含前向传递、反向传递两个阶段，具体包括<strong>计算流和通信流</strong>两个流。</p>
+<ol>
+<li>前向传递：通常按顺序执行**ATTN（计算流）、DISPATCH（通信流）、MLP（计算流）、COMBINE（通信流）**操作。</li>
+</ol>
+<ul>
+<li><p>ATTN（计算流）：指注意力机制计算，使大模型能够捕捉文本等数据中的依赖关系，提升模型的性能和泛化能力。</p>
+</li>
+<li><p>DISPATCH（通信流）：指数据或任务在不同GPU节点之间的传递，提高整个训练系统的并行度和效率。</p>
+</li>
+<li><p>MLP（计算流）：即多层感知机计算，由输入层、输出层和一个或多个隐藏层构成，利用梯度下降法更新权重参数。</p>
+</li>
+<li><p>COMBINE（通信流）：指将不同GPU节点上将计算结果进行合并的通信操作。</p>
+</li>
+</ul>
+<p>ii. 反向传递：需要执行**COMBINE（通信流）、MLP_B（计算流）、MLP_W（计算流）、DISPATCH（通信流）、ATTN_B（计算流）、ATTN_W（计算流）**操作:</p>
+<ul>
+<li><p>COMBINE（通信流）：定义与前向传递相同，此处特指反向传递时的数据汇总，以便进行全局参数更新。</p>
+</li>
+<li><p>MLP_B（计算流）：此处的B指的是Bias，指的是反向传播中对于偏执项的计算，以便更新大模型的偏执参数。</p>
+</li>
+<li><p>MLP_W（计算流）：此处的W指的是Weight，指的是反向传播中对于权重参数的计算，用于更新权重参数。</p>
+</li>
+<li><p>DISPATCH（通信流）：在反向计算中，DISPATCH 的作用仍然是负责数据或任务的分发。</p>
+</li>
+<li><p>ATTN_B（计算流）：偏置项也会影响注意力权重的计算和最终的输出，通过计算调整注意力机制中的偏置参数。</p>
+</li>
+<li><p>ATTN_W（计算流）：计算损失函数对注意力权重的梯度，通过更新注意力权重捕捉数据中的依赖关系和重要信息。</p>
+</li>
+</ul>
+<p>﻿<a class="simple-lightbox" href="/images/image_1739354498_3.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_3.png"  alt="Image 26" lazyload></a></p>
+<p>b)优化方法：此处的双流并行，指的是计算流和通信流，双流并行即在大模型训练的反向传递阶段，<strong>将原本存在先后顺序的更新当前层权重（即MLP_B）和将梯度继续传递到前一层（即MLP_W）这两个操作，拆分成两个独立且并行的流</strong>，同时通过细致的设计，让训练的 barrier 刚好停在两个流任务完成的时候，<strong>而不需要通信流或者是计算流进行等待，提高计算效率</strong>。</p>
+<p><a class="simple-lightbox" href="/images/image_1739354498_4.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_4.png"  alt="Image 27" lazyload></a></p>
+<p>2. 双向流水线调度优化：</p>
+<p>a)基本概念：PP并行方法中，<strong>训练过程经常容易出现气泡（即GPU闲置）</strong>，核心原因是在PP并行中不同的计算阶段可能具有不同的计算复杂度和执行时间，<strong>导致计算快的阶段需要等待计算慢的阶段完成后才能继续进行下一轮计算</strong>，同时不同阶段之间需要进行数据通信来传递中间结果，可能会受到网络带宽等影响导致数据传输延迟，如下图所示，其中有以下一些关键信息。</p>
+<p>i.颜色：蓝色代表前向传播，绿色代表反向传播，<strong>灰色代表空闲状态</strong>（即气泡）。</p>
+<p>ii.数字：表示不同的微批次（Micro - batch），图中不同GPU上的数字序列，反映了各个微批次在不同GPU上的计算顺序和时间分布。</p>
+<p>﻿<a class="simple-lightbox" href="/images/image_1739354498_5.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_5.png"  alt="Image 28" lazyload></a></p>
+<p>b)优化方法：传统的单向流水线通常是按照固定顺序，从流水线起始端依次进行微批次（micro - batch）处理；而DeepSeek-V3在训练过程中<strong>采用了双向流水线调度设计，即同时从两端进行微批次（micro - batch）处理</strong>，减少流水线气泡，另外DeepSeek将每个 micro - batch 进一步划分为更小的块（chunk），<strong>并对计算和通信进行精细调度，实现两者的高度重叠</strong><strong>，提高 GPU 利用率</strong>。</p>
+<p>iii.起始端：在PP并行中，通常将设备编号较小的一端视为起始端，即图中的 Device 0。</p>
+<p>iv.末端：设备编号较大的一端为末端，也就是图中的 Device 7，在双向流水线中，Device 7 等设备也会在合适的时机启动计算任务，且与起始端的计算任务相互配合，<strong>并非只是被动等待起始端计算完成后才开始工作</strong>。</p>
+<p><a class="simple-lightbox" href="/images/image_1739354498_6.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_6.png"  alt="Image 29" lazyload></a></p>
+<p><strong>2.3 ZeRO-1(DP) 数据并行策略：降低内存占用，加速模型训练</strong></p>
+<p><strong>1.</strong> 基本概念：ZeRO（Zero Redundancy Optimizer）即零冗余优化器，是由微软提出的一种旨在减少分布式训练中内存使用的技术框架；ZeRO-1(DP)结合了零冗余优化器的思想和数据并行策略。</p>
+<p><strong>2.</strong> 工作原理：在传统的数据并行中，每个设备都保存完整的优化器状态（如梯度、参数等），这会导致内存冗余；而 ZeRO-1 会将优化器状态划分到不同的设备上，<strong>每****个设备只保存一部分优化器状态</strong>，在反向传播计算完成后，各个设备会交换自己所负责的参数的梯度信息，然后根据这些梯度更新各自保存的部分优化器状态和模型参数；通过这种方式，<strong>虽然每个设备只保存了部分信息，但最终所有设备上的模型参数会保持一致</strong>。</p>
+<p>3. 核心价值：</p>
+<p>a)降低内存占用：ZeRO-1(DP) 数据并行策略<strong>显著降低了单个 GPU 的内存占用</strong>，让模型能够在有限的显存中进行训练。</p>
+<p>b)加速模型训练：首先由于内存占用降低，模型可以处理更大的批量数据，<strong>提高了计算资源的利用率</strong>，从而加快训练速度；另外ZeRO-1 通过在不同GPU之间共享一部分状态变量，<strong>减少了 GPU 之间的通信****开销</strong>，进一步提升了整体训练效率。</p>
+<p>三、通信优化</p>
+<p><strong>3.1 Moe 路由的All2All优化设计：网络拓扑优化与资源分配优化</strong></p>
+<h4 id="1-基本概念：在MoE大模型训练中，需要将训练数据按照数据类型或特征分配给最合适的专家模型进行处理，此时常用到两种数据路由方案，一种是All-to-All通信方案，另一种是基于-Magetron-实现的All-Reduce和Reduce-Scatter通信方案，其优缺点大致如下："><a href="#1-基本概念：在MoE大模型训练中，需要将训练数据按照数据类型或特征分配给最合适的专家模型进行处理，此时常用到两种数据路由方案，一种是All-to-All通信方案，另一种是基于-Magetron-实现的All-Reduce和Reduce-Scatter通信方案，其优缺点大致如下：" class="headerlink" title="1. 基本概念：在MoE大模型训练中，需要将训练数据按照数据类型或特征分配给最合适的专家模型进行处理，此时常用到两种数据路由方案，一种是All to All通信方案，另一种是基于 Magetron 实现的All Reduce和Reduce Scatter通信方案，其优缺点大致如下："></a>1. 基本概念：在MoE大模型训练中，需要将训练数据按照数据类型或特征分配给最合适的专家模型进行处理，<strong>此时常用到两种数据路由方案</strong>，一种是All to All通信方案，另一种是基于 Magetron 实现的All Reduce和Reduce Scatter通信方案，其优缺点大致如下：</h4><p>a)All to All通信：在数据传输时，根据实际传输的数据量来开辟相应大小的显存空间；这种方案的<strong>优势是显存开销小，劣势是由于是点对点通信、通信效率相对较低</strong>。</p>
+<p>b)All Reduce和Reduce Scatter通信：这种方案首先是将所有数据路由至每一张GPU，然后通过掩码筛选出每个专家模型真正需要的数据，再进行求和、求最大值等规约操作，并将数据重新合理分配至每一张GPU；这种方案的<strong>优势是通信效率较高，劣势是显存开销比较大</strong>。</p>
+<p>2. 实现方案：在 DeepSeek-V3 的实际训练中，<strong>选择了All to All的通信方案</strong>，为了解决All to All在通信效率方面存在的劣势，<strong>采用了众多通信优化手段</strong>，比较核心的有以下几个方面。</p>
+<p>a)限制路由范围：限制每个训练 token 最多只能被调度到 4 台GPU服务器，<strong>减少跨节点间的 IB 流量</strong>，规避了节点过多时训练 Token 随意路由导致的通信拥塞问题。</p>
+<p>b)网络拓扑优化：DeepSeek-V3 的训练集群应该<strong>采用了多轨组网方案</strong>（其并未正式公布，从其他渠道了解信息猜测得到），确保服务器收发数据时，可以在不同节点的同号卡之间实现最少跳数的互联，所以在数据路由策略上，DeepSeek-V3 会通过IB网络将数据从源端服务器传输至目标服务器相同卡号的GPU上，然后基于 NVLink 转发至托管目标专家的特定GPU，实现高效机内和机间通信，最大化利用高速互联网络带宽。</p>
+<p>c)资源分配优化：当期望训练流与通信流同时工作并达到重叠状态时（如二.2所述），就容易出现<strong>GPU SM资源（SM即流多处理器，H800有132个SM）的争抢，DeepSeek-V3 通过使用定制化的 PTX（即网络上宣称绕过CUDA的语言）</strong>，对GPU的132个SM进行了改造，专门划分出20个SM用于处理服务器间通信任务，并根据训练流和通信流的具体特点和需求，对指令执行进行优化，例如分配指令优先级、调整指令执行顺序等，减少 SM 资源分配和 L2 缓存抢占现象的发生。</p>
+<p>d)动态资源调整：DeepSeek-V3 采用了自动调整的资源分配策略，<strong>能够根据训练流和通信流在不同时刻的资源需求动态地分配 SM 和 L2 缓存资源</strong>，系统能够通过为每个专家引入的偏置项，根据每个专家的历史利用率情况，动态地调整其接收新任务的概率，即无辅助损失负载均衡策略。</p>
+<p>四、显存优化</p>
+<p><strong>4.1 FP8 低精度训练：混合训练框架和精细量化策略</strong></p>
+<p>1. 混合精度训练框架：在 DeepSeek-V3 的训练中，对于占据大量计算量的 <strong>GEMM（通用矩阵乘法）操作，采用 FP8 精度执行</strong>，FP8 数据类型具有较低的内存占用和更快的计算速度，所以可以<strong>显著提升计算效率、降低显存开销</strong>；同时为了确保训练的稳定性，对于少数对精度要求比较高的关键操作，如嵌入模块（将输入 Token 转换为向量表示）、注意力操作等，<strong>仍保持高精度（BF16&#x2F;FP32）计算</strong>。</p>
+<p>2. 精细量化策略：FP8 虽然在训练速度和显存占用方面优势明显，但是由于需要采取措施对训练数据、模型参数、中间激活值进行量化操作，<strong>容易在训练过程中出现因量化误差导致的模型发散等问题</strong>，影响训练稳定性和模型性能，DeepSeek-V3 在训练过程中采用了分块量化、块级量化、高精度累加<strong>三种精细量化策略</strong>解决这个问题。</p>
+<p>a)分块量化：数据划分粒度相对较细，<strong>将数据划分为多个小****块</strong>，然后对每个小块分别进行量化操作，这种方式能更精细地适应数据的局部特征，减少量化误差。</p>
+<p>b)块级量化：数据划分粒度相对较粗，<strong>对更大的块进行统一量化处理</strong>，这种方式更关注数据的整体特征和分布情况，通过对较大块的数据采用相同的量化参数进行量化，可以简化量化计算过程，降低计算复杂度。</p>
+<p>c)高精度累加：在一些关键计算步骤中，虽然中间计算过程使用了 FP8 精度以提高计算效率，<strong>但在进行累加等操作时，会将 FP8 数据转换为更高精度的数据类型（BF16&#x2F;FP32）进行累加</strong>，然后再根据需要转换回 FP8 精度进行后续计算，这种机制可以有效控制量化误差的积累。</p>
+<p>﻿<a class="simple-lightbox" href="/images/image_1739354498_7.png"><img   src="/images/loading.svg" data-src="/images/image_1739354498_7.png"  alt="Image 30" lazyload></a></p>
+<p><strong>4.2 选择重计算：间隔重计算和选择性重计算优化</strong></p>
+<p>1. 基本概念：在训练过程中，需要占用大量的显存来存储模型参数、中间结果等数据，当模型参数规模较大或者训练数据量较多时，可能会出现显存不够用的情况；所以业界会采用重计算优化方法，<strong>即在前向传播时不保存上述的中间结果数据，而是在反向传播需要的时候重新计算它们</strong>，大大减少中间结果所占用的显存空间。</p>
+<p>2. 实现方案：比较粗暴的实现方案是完全重计算，这种方案因为计算量较大，会大幅增加训练全过程时间，所以业界一直在探索更为高效的选择重计算方案，DeepSeek-V3 在训练过程中主要应用了<strong>间隔重计算和选择性重计算</strong>两种优化手段。</p>
+<p>a)间隔重计算：即“<strong>隔一层重计算一次</strong>” ，在反向传播中对一半层的输入输出进行重计算，另一半层按照传统方式保存中间结果数据。</p>
+<p>b)选择性重计算：大模型每一层的计算，通常由<strong>类似 RMSkernel 的计算强度较弱的部分</strong>（包含平方、求和、开方等计算操作，用于稳定训练过程、加速模型收敛）和<strong>计算强度较强的 GEMM 矩阵乘法部分组成</strong>，他们虽然都会产生中间结果，但是计算成本差异较大；通常 RMSkernel 的计算时间占比小、但<strong>单位计算的显存占用大</strong>，而GEMM的计算时间占比大、但<strong>单位计算的显存占用小</strong>；所以选择性重计算方法<strong>重点是针对 RMSkernel 相关的部分算子进行重计算，获得最大的性价比。</strong></p>
+<p><strong>4.3 EMA显存优化：异步处理与显存卸载优化</strong></p>
+<p>1. 基本概念：EMA是指数移动平均（Exponential Moving Average），它对于模型训练过程中每一步更新得到的参数，计算指数加权平均值，得到一组新的参数，用于监测训练方向，<strong>避免噪声对于模型参数更新的影响，以得到更加稳定、泛化能力更强的参数</strong>；由于EMA需要额外维护一组参数，所以会占用一定的显存空间。</p>
+<p>2.实现方案：DeepSeek-V3 在训练过程中采用了异步处理和显存卸载方法，优化了EMA的显存占用。</p>
+<p>a)异步处理：由于EMA的计算过程并不需要训练过程中实时产生的数据，所以可以独立于前向传播和反向传播而开展，DeepSeek采用异步处理方式，<strong>让EMA计算过程与训练过程并行开展。</strong></p>
+<p>b)显存卸载：基于上述异步处理的基础，<strong>可以将EMA计算从GPU显存卸载至CPU</strong>，即在每一轮训练结束后，将模型参数传递给CPU，在 CPU 上计算 EMA 参数，然后将更新后的 EMA 参数存储在 CPU 内存中，减少GPU的显存占用。</p>
+<p><strong>4.4 头尾参数共享：embedding 层和 lm_head 层共享参数的优化策略</strong></p>
+<p><strong>1.</strong> 基本概念：embedding层位于模型首端，核心作用是把离散的 Token 转换为连续的向量表示，实现这一转换依靠的是一个可学习的权重矩阵，其大小为 vocab_size * hidden_size（词表大小 * 每个 Token 对应的嵌入向量的维度）；lm_head 层位于模型的末端，将模型输出的嵌入向量重新映射回 Token 的概率分布，以便计算损失函数，其实现方式同样是依赖一个大小为 vocab_size * hidden_size 的权重矩阵。</p>
+<p>2.实现方案：头尾参数共享，指的是<strong>让 embedding 层和 lm_head 层使用同一个权重矩阵</strong>，这种优化方案由于减少了参数存储量，与之相关的梯度、优化器状态和参数备份等占用的显存也会相应减少，<strong>且共用的权重矩阵有助于模型学习到更稳定和通用的 Token 表示</strong>，从而提高模型的性能和泛化能力。</p>
+<p>总结</p>
+<p>通过上述对 DeepSeek-V3 高效训练关键技术的分析，我们能够看出，DeepSeek-V3 之所以能够利用5%的算力训练出对标 GPT-4o 的先进模型，与其创新性的模型架构设计、高效的并行策略选择以及对集群通信和显存的极致优化密不可分，<strong>高效训练方法的表象是需要更少规模的算力</strong>，<strong>但其本质是对算法创新和极致集群性能的更高要求</strong>，所以 DeepSeek-V3 的先进经验对于 AI Infra 绝不是利空，反而随着精细化的高效训练方法被业界普遍采用，<strong>基于先进芯片选型、先进架构搭建的 AI Infra 的重要性会越发凸****显</strong>，持续学习。</p>
+<p><strong>零门槛，即刻拥有 DeepSeek-R1 满血版</strong></p>
+<p>DeepSeek 是热门的推理模型，能在少量标注数据下显著提升推理能力，尤其擅长数学、代码和自然语言等复杂任务。本方案涵盖云上调用满血版 DeepSeek 的 API 及部署各尺寸模型的方式，无需编码，最快 5 分钟、最低 0 元即可实现。</p>
+<p>点击阅读原文查看详情。</p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%9AMTP-%E7%9A%84%E5%85%A8%E7%A7%B0%E6%98%AF-Multi-Token-Prediction%EF%BC%88%E5%A4%9A%E4%BB%A4%E7%89%8C%E9%A2%84%E6%B5%8B%EF%BC%89%EF%BC%8C%E4%B8%8E%E4%B9%8B%E5%AF%B9%E5%BA%94%E7%9A%84%E6%98%AF-DeepSeek-V3-%E5%8F%91%E5%B8%83%E4%B9%8B%E5%89%8D%E4%B8%9A%E7%95%8C%E6%99%AE%E9%81%8D%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8D%95%E4%BB%A4%E7%89%8C%E9%A2%84%E6%B5%8B%EF%BC%88Single-Token-Prediction%EF%BC%8CSTP%EF%BC%89%EF%BC%8CSTP-%E4%B8%80%E6%AC%A1%E4%BB%85%E9%A2%84%E6%B5%8B%E4%B8%80%E4%B8%AAToken%EF%BC%8C%E8%80%8C-MTP-%E5%8F%AF%E5%90%8C%E6%97%B6%E9%A2%84%E6%B5%8B%E5%A4%9A%E4%B8%AA-Token%EF%BC%8C%E8%BF%99%E4%B8%80%E6%96%B9%E6%A1%88%E5%9C%A8%E8%AE%AD%E7%BB%83%E9%98%B6%E6%AE%B5%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87%E6%95%B0%E6%8D%AE%E8%AE%AD%E7%BB%83%E6%95%88%E7%8E%87%EF%BC%8C%E5%9C%A8%E6%8E%A8%E7%90%86%E9%98%B6%E6%AE%B5%E5%8F%AF%E4%BB%A5%E5%AE%9E%E7%8E%B0%E6%98%BE%E8%91%97%E5%8A%A0%E9%80%9F%E3%80%82"><span class="top-box-text">1. 基本概念：MTP 的全称是 Multi - Token Prediction（多令牌预测），与之对应的是 DeepSeek-V3 发布之前业界普遍使用的单令牌预测（Single - Token Prediction，STP），STP 一次仅预测一个Token，而 MTP 可同时预测多个 Token，这一方案在训练阶段可以提升数据训练效率，在推理阶段可以实现显著加速。</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/02/12/wen_zhang_gui_dang/wen_zhang_gui_dang_ben_ke_sheng_dian_fu_yao_qi_zhi_40_nian_qian_cai_xiang_yi_wai_fa_xian_xin_xing_ha_xi_biao_shu_ju_sou_suo_su_du_tu_po_li_lun_shang_xian/">
+          <h3 class="post-title">
+            下一篇：[文章归档]本科生颠覆姚期智40年前猜想！意外发现新型哈希表，数据搜索速度突破理论上限
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

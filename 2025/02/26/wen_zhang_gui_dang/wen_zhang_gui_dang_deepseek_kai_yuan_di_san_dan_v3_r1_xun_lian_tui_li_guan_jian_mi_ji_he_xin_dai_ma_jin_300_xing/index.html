@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[文章归档]DeepSeek开源第三弹：V3_R1训练推理关键秘籍，核心代码仅300行</title>
+<meta name="keywords" content="[文章归档]DeepSeek开源第三弹：V3_R1训练推理关键秘籍，核心代码仅300行, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="原始URL: http://mp.weixin.qq.com/s?__biz&#x3D;MzIzNjc1NzUzMw&#x3D;&#x3D;&amp;mid&#x3D;2247779638&amp;idx&#x3D;1&amp;sn&#x3">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[文章归档]DeepSeek开源第三弹：V3_R1训练推理关键秘籍，核心代码仅300行">
+<meta property="og:description" content="原始URL: http://mp.weixin.qq.com/s?__biz&#x3D;MzIzNjc1NzUzMw&#x3D;&#x3D;&amp;mid&#x3D;2247779638&amp;idx&#x3D;1&amp;sn&#x3">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <link rel="stylesheet" href="/style/simple-lightbox.min.css"><meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[文章归档]DeepSeek开源第三弹：V3_R1训练推理关键秘籍，核心代码仅300行</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-02-26</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/%E6%96%87%E7%AB%A0%E5%BD%92%E6%A1%A3/">
+              文章归档
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/%E9%87%8F%E5%AD%90%E4%BD%8D/">
+              量子位
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p><strong>原始URL</strong>: <a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247779638&idx=1&sn=8770b12268a382c8b6ab66745a66798a&chksm=e9237f6c86db026d40d622881ec6ddb127c10fe4d45e4b313ca86ef059cb51a7e4601a6c6bb9&&scene=1&srcid=0226Y2w4ai60CjewEFMsbfq3&sharer_shareinfo=f1a554452592315af1c55e9f6c176a79&sharer_shareinfo_first=f1a554452592315af1c55e9f6c176a79">http://mp.weixin.qq.com/s?__biz&#x3D;MzIzNjc1NzUzMw&#x3D;&#x3D;&amp;mid&#x3D;2247779638&amp;idx&#x3D;1&amp;sn&#x3D;8770b12268a382c8b6ab66745a66798a&amp;chksm&#x3D;e9237f6c86db026d40d622881ec6ddb127c10fe4d45e4b313ca86ef059cb51a7e4601a6c6bb9&amp;&amp;scene&#x3D;1&amp;srcid&#x3D;0226Y2w4ai60CjewEFMsbfq3&amp;sharer_shareinfo&#x3D;f1a554452592315af1c55e9f6c176a79&amp;sharer_shareinfo_first&#x3D;f1a554452592315af1c55e9f6c176a79</a><br><strong>抓取时间</strong>: 2025-02-26 11:38:26<br><strong>本地化图片</strong>: 11张</p>
+<p>Title: DeepSeek开源第三弹：V3&#x2F;R1训练推理关键秘籍，核心代码仅300行</p>
+<p>URL Source: <a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247779638&idx=1&sn=8770b12268a382c8b6ab66745a66798a&chksm=e9237f6c86db026d40d622881ec6ddb127c10fe4d45e4b313ca86ef059cb51a7e4601a6c6bb9&&scene=1&srcid=0226Y2w4ai60CjewEFMsbfq3&sharer_shareinfo=f1a554452592315af1c55e9f6c176a79&sharer_shareinfo_first=f1a554452592315af1c55e9f6c176a79">http://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&amp;mid=2247779638&amp;idx=1&amp;sn=8770b12268a382c8b6ab66745a66798a&amp;chksm=e9237f6c86db026d40d622881ec6ddb127c10fe4d45e4b313ca86ef059cb51a7e4601a6c6bb9&amp;&amp;scene=1&amp;srcid=0226Y2w4ai60CjewEFMsbfq3&amp;sharer_shareinfo=f1a554452592315af1c55e9f6c176a79&amp;sharer_shareinfo_first=f1a554452592315af1c55e9f6c176a79</a></p>
+<p>Markdown Content:</p>
+<h5 id="金磊-发自-凹非寺"><a href="#金磊-发自-凹非寺" class="headerlink" title="金磊 发自 凹非寺"></a>金磊 发自 凹非寺</h5><p>量子位 | 公众号 QbitAI</p>
+<p>开源周的第三天，<strong>DeepSeek</strong>把训练推理V3&#x2F;R1背后的“动力”给亮出来了——</p>
+<p><strong>DeepGEMM</strong>：一个FP8 GEMM（通用矩阵乘法）库，支持密集（dense）和混合专家（MoE）矩阵乘法运算。</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_0.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_0.png"  alt="Image 1" lazyload></a></p>
+<p>我们先来简单了解一下GEMM。</p>
+<p>GEMM，即通用矩阵乘法，是线性代数中的基本运算，是科学计算、机器学习、深度学习等领域中“常客”，也是许多高性能计算任务的核心。</p>
+<p>但由于它的计算量往往都比较大，所以GEMM的性能优化是至关重要的一点。</p>
+<p>而DeepSeek这次开源的DeepGEMM，依旧是保持了**“高性能+低成本”**的特性，亮点如下：</p>
+<ul>
+<li><p><strong>高性能</strong>：在Hopper架构的GPU上，DeepGEMM能够实现高达1350+FP8 TFLOPS的性能。</p>
+</li>
+<li><p><strong>简洁性</strong>：核心逻辑仅约 300 行代码，但性能却优于专家调优的内核。</p>
+</li>
+<li><p><strong>即时编译（JIT）</strong>：采用完全即时编译的方式，这意味着它可以在运行时动态生成优化的代码，从而适应不同的硬件和矩阵大小。</p>
+</li>
+<li><p><strong>无重依赖</strong>：这个库设计得非常轻量级，没有复杂的依赖关系，可以让部署和使用变得简单。</p>
+</li>
+<li><p><strong>支持多种矩阵布局</strong>：支持密集矩阵布局和两种 MoE 布局，这使得它能够适应不同的应用场景，包括但不限于深度学习中的混合专家模型。</p>
+</li>
+</ul>
+<p>简单来说，DeepGEMM主要用于加速深度学习中的矩阵运算，特别是在大规模模型训练和推理中，它特别适用于需要高效计算资源的场景，能够显著提升计算效率。</p>
+<p>很多网友们对这次的开源都比较“买单”，有人将DeepGEMM比作数学界的超级英雄，认为它比飞快的计算器还要快，比多项式方程还要强大。</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_1.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_1.png"  alt="Image 2" lazyload></a></p>
+<p>也有人将DeepGEMM的发布比喻为量子态稳定到一个新的现实，称赞其即时编译的干净利落。</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_2.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_2.png"  alt="Image 3" lazyload></a></p>
+<p>当然……也有人开始担心起自己手上的英伟达股票了……</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_3.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_3.png"  alt="Image 4" lazyload></a></p>
+<h2 id="深入了解DeepGEMM"><a href="#深入了解DeepGEMM" class="headerlink" title="深入了解DeepGEMM"></a>深入了解DeepGEMM</h2><p>DeepGEMM是一个专门为实现简洁高效的FP8通用矩阵乘法（GEMMs）而打造的库，它还具备细粒度缩放功能，这一设计源于DeepSeek V3。</p>
+<p>它既能处理普通的通用矩阵乘法，也能支持MoE分组的通用矩阵乘法。</p>
+<p>这个库是用CUDA编写的，安装的时候不需要编译，因为它会在运行时通过一个轻量级的即时编译（JIT）模块来编译所有的内核程序。</p>
+<p>目前，DeepGEMM只支持英伟达的Hopper张量核心。</p>
+<p>为了解决FP8张量核心在计算累积时不够精确的问题，它采用了CUDA核心的两级累积（提升）方法。</p>
+<p>虽然DeepGEMM借鉴了CUTLASS和CuTe里的一些理念，但并没有过度依赖它们的模板或代数运算。</p>
+<p>相反，这个库设计得很简洁，只有一个核心内核函数，代码量大概300行左右。</p>
+<p>这使得它成为一个简洁易懂的资源，方便大家学习Hopper架构下的FP8矩阵乘法和优化技术。</p>
+<p>尽管其设计轻巧，但DeepGEMM的性能可以匹配或超过各种矩阵形状的专家调优库。</p>
+<p>那么具体性能如何呢？</p>
+<p>团队在H800上使用NVCC 12.8测试了DeepSeek-V3&#x2F;R1推理中可能使用的所有形状（包括预填充和解码，但没有张量并行）。</p>
+<p>下面这张图展示的是用于密集模型的普通DeepGEMM的性能：</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_4.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_4.png"  alt="Image 5" lazyload></a></p>
+<p>从测试结果来看，DeepGEMM<strong>计算性能</strong>最高可达1358 TFLOPS，<strong>内存宽带</strong>最高可达2668 GB&#x2F;s。</p>
+<p><strong>加速比</strong>方面，与基于CUTLASS 3.6的优化实现相比，最高可达2.7倍。</p>
+<p>再来看下DeepGEMM支持MoE模型的<strong>连续布局</strong>（contiguous layout）的性能：</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_5.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_5.png"  alt="Image 6" lazyload></a></p>
+<p>以及支持MoE模型<strong>掩码布局</strong>（masked layout）的性能是这样的：</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_6.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_6.png"  alt="Image 7" lazyload></a></p>
+<h2 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h2><p>要想使用DeepGEMM，需先注意一下几个<strong>依赖项</strong>，包括：</p>
+<ul>
+<li><p>必须支持Hopper架构的GPU，sm_90a。</p>
+</li>
+<li><p>Python 3.8及以上。</p>
+</li>
+<li><p>CUDA 12.3及以上（推荐12.8）。</p>
+</li>
+<li><p>PyTorch 2.1及以上。</p>
+</li>
+<li><p>CUTLASS 3.6及以上</p>
+</li>
+</ul>
+<p>Development代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># Submodule must be cloned</span><br></pre></td></tr></table></figure>
+
+<p>安装代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+
+<p>在上述步骤之后，您的Python项目中导入deep_gemm即可。</p>
+<p>在<strong>接口</strong>方面，对于普通的DeepGEMM，可调用deep_gemm.gemm_fp8_fp8_bf16_nt函数，支持NT格式（非转置LHS和转置RHS）。</p>
+<p>对于分组的DeepGEMM，连续布局情况下是m_grouped_gemm_fp8_fp8_bf16_nt_contiguous；掩码布局情况下是m_grouped_gemm_fp8_fp8_bf16_nt_masked。</p>
+<p>DeepGEMM还提供设置最大SM数量、获取TMA对齐大小等工具函数；支持环境变量，如DG_NVCC_COMPILER、DG_JIT_DEBUG等。</p>
+<p>除此之外，DeepSeek团队还提供了几种<strong>优化的方式</strong>，包括：</p>
+<ul>
+<li><p><strong>JIT设计</strong>：所有内核在运行时编译，无需安装时编译；支持动态选择最优块大小和流水线阶段。</p>
+</li>
+<li><p><strong>细粒度缩放</strong>：通过CUDA核心两层累加解决FP8精度问题；支持非2的幂次方块大小，优化SM利用率。</p>
+</li>
+<li><p><strong>FFMA SASS交错</strong>：通过修改SASS指令的yield和reuse位，提高性能。</p>
+</li>
+</ul>
+<p><a class="simple-lightbox" href="/images/image_1740541106_7.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_7.png"  alt="Image 8" lazyload></a></p>
+<p>感兴趣的小伙伴可以戳文末GitHub链接查看详情哦~</p>
+<h2 id="One-More-Thing"><a href="#One-More-Thing" class="headerlink" title="One More Thing"></a>One More Thing</h2><p>英伟达这几天的股票……嗯……一直再跌：</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_8.png"><img   src="/images/loading.svg" data-src="/images/image_1740541106_8.png"  alt="Image 9" lazyload></a></p>
+<p>不过在北京时间27日凌晨，英伟达2025财年第四季度业绩报告也即将出炉，我们可以期待一下它的表现~</p>
+<p><strong>扫码备注「DeepSeek-职业&#x2F;姓名」加入群聊，一起追踪DeepSeek开源周！</strong></p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_9.webp"><img   src="/images/loading.svg" data-src="/images/image_1740541106_9.webp"  alt="Image 10: Image" lazyload></a></p>
+<p>DeepGEMM GitHub入口：<br><a target="_blank" rel="noopener" href="https://github.com/deepseek-ai/DeepGEMM">https://github.com/deepseek-ai/DeepGEMM</a></p>
+<p>— <strong>完</strong> —</p>
+<p><strong>评选报名</strong>｜<strong>2025年值得关注的****AIGC企业&amp;产品</strong></p>
+<p>下一个AI“国产之光”将会是谁？</p>
+<p>本次评选结果将于4月中国AIGC产业峰会上公布，欢迎参与！</p>
+<p><a class="simple-lightbox" href="/images/image_1740541106_10.jpg"><img   src="/images/loading.svg" data-src="/images/image_1740541106_10.jpg"  alt="Image 11" lazyload></a></p>
+<p><strong>一键关注 👇 点亮星标</strong></p>
+<p><strong>科技前沿进展每日见</strong></p>
+<p><strong>一键三连</strong><strong>「点赞」「转发」「小心心」</strong></p>
+<p><strong>欢迎在评论区留下你的想法！</strong></p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%B7%B1%E5%85%A5%E4%BA%86%E8%A7%A3DeepGEMM"><span class="top-box-text">深入了解DeepGEMM</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%EF%BC%9F"><span class="top-box-text">如何使用？</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#One-More-Thing"><span class="top-box-text">One More Thing</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/02/26/wen_zhang_gui_dang/wen_zhang_gui_dang_miao_wa_di_zhe_shi_ke_neng_yao_jie_jue_liao/">
+          <h3 class="post-title">
+            下一篇：[文章归档]妙瓦底这事可能要解决了
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  <script src="/js/simple-lightbox.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {new SimpleLightbox('.post-detail .simple-lightbox', {fileExt: false,captionsData:'alt'});});</script></body>
+</html>
+

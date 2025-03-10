@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[Python学习笔记]一道题做了一整天</title>
+<meta name="keywords" content="[Python学习笔记]一道题做了一整天, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="Lanqiao OJ 532 纪念品分组题目描述123456789101112131415161718192021元旦快到了，校学生会让乐乐负责新年晚会的纪念品发放工作。为使得参加晚会的同学所获得的纪念品价值相对均衡，他要把购来的纪念品根据">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[Python学习笔记]一道题做了一整天">
+<meta property="og:description" content="Lanqiao OJ 532 纪念品分组题目描述123456789101112131415161718192021元旦快到了，校学生会让乐乐负责新年晚会的纪念品发放工作。为使得参加晚会的同学所获得的纪念品价值相对均衡，他要把购来的纪念品根据">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[Python学习笔记]一道题做了一整天</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-03-09</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/Python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+              Python学习笔记
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/%E8%B4%AA%E5%BF%83/">
+              贪心
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h1 id="Lanqiao-OJ-532-纪念品分组"><a href="#Lanqiao-OJ-532-纪念品分组" class="headerlink" title="Lanqiao OJ 532 纪念品分组"></a>Lanqiao OJ 532 纪念品分组</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">元旦快到了，校学生会让乐乐负责新年晚会的纪念品发放工作。为使得参加晚会的同学所获得的纪念品价值相对均衡，他要把购来的纪念品根据价格进行分组，但每组最多只能包括两件纪念品，并且每组纪念品的价格之和不能超过一个给定的整数。为了保证在尽量短的时间内发完所有纪念品，乐乐希望分组的数目最少。</span><br><span class="line"></span><br><span class="line">你的任务是写一个程序，找出所有分组方案中分组数最少的一种，输出最少的分组数目。</span><br><span class="line"></span><br><span class="line"><span class="section">## 输入描述</span></span><br><span class="line"></span><br><span class="line">第 1 行包括一个整数 w (80 ≤ w ≤ 200)，为每组纪念品价格之和的上限。</span><br><span class="line"></span><br><span class="line">第 2 行为一个整数 n (1 ≤ n ≤ 30000)，表示购来的纪念品的总件数。</span><br><span class="line"></span><br><span class="line">第 3 ～ n+2 行每行包含一个正整数 p<span class="emphasis">_i (5 ≤ p_</span>i ≤ w)，表示所对应纪念品的价格。</span><br><span class="line"></span><br><span class="line"><span class="section">## 输出描述</span></span><br><span class="line"></span><br><span class="line">输出一个整数，表示最少的分组数目。</span><br><span class="line"></span><br><span class="line"><span class="section">## 运行限制</span></span><br><span class="line"></span><br><span class="line">最大运行时间：1s  </span><br><span class="line">最大运行内存：128M</span><br></pre></td></tr></table></figure>
+
+<h2 id="一道题做了一整天"><a href="#一道题做了一整天" class="headerlink" title="一道题做了一整天"></a>一道题做了一整天</h2><p>这题目今天琢磨了很久，一度以为是题出错了。</p>
+<p>想法是用堆来做匹配，一直把一部分匹配成小于等于<code>W</code>的组合就算分组了一次。</p>
+<p>结果遇到<code>1,1,1,1,1,1,1,1,1,1,1,99</code>这种例子死活过不去，按照我的算法和模拟最后最少的分组应该是<code>2</code>组，但是答案是<code>5</code>组</p>
+<p>非常挠头，最后怀疑是题出错了，最后最后才发现题目要求每组最多两个礼物。。</p>
+<p>不过也有收获，今天学会了下载测试样例到本地，还有使用<code>launch.json</code>实现调试重定向</p>
+<p>干饭!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用堆实现只能通过60%的样例，其余全部TLE</span></span><br><span class="line"><span class="comment"># （堆无法删除指定元素，每次删除指定元素必须遍历整个堆，因为堆是用二叉树实现的）</span></span><br><span class="line"><span class="comment"># import heapq</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># w = int(input())</span></span><br><span class="line"><span class="comment"># n = int(input())</span></span><br><span class="line"><span class="comment"># priceList = [int(input()) for _ in range(n)]</span></span><br><span class="line"><span class="comment"># print(&quot;readed&quot;)</span></span><br><span class="line"><span class="comment"># heapq.heapify(priceList)</span></span><br><span class="line"><span class="comment"># print(&quot;heapq&quot;)</span></span><br><span class="line"><span class="comment"># result = []</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># def delementOnheap(heap,target):</span></span><br><span class="line"><span class="comment"># # 遍历堆并删除目标元素</span></span><br><span class="line"><span class="comment">#     temp_heap = []</span></span><br><span class="line"><span class="comment">#     found = False</span></span><br><span class="line"><span class="comment">#     while heap:</span></span><br><span class="line"><span class="comment">#         min_elem = heapq.heappop(heap)</span></span><br><span class="line"><span class="comment">#         if min_elem == target and not found:</span></span><br><span class="line"><span class="comment">#             found = True</span></span><br><span class="line"><span class="comment">#             # print(f&quot;找到了并移除了元素: &#123;target&#125;&quot;)</span></span><br><span class="line"><span class="comment">#             continue  # 跳过该元素</span></span><br><span class="line"><span class="comment">#         heapq.heappush(temp_heap, min_elem)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#     # 将剩余元素恢复回堆</span></span><br><span class="line"><span class="comment">#     heap = temp_heap</span></span><br><span class="line"><span class="comment">#     heapq.heapify(heap)</span></span><br><span class="line"><span class="comment">#     return heap</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># while(len(priceList) &gt;= 2):</span></span><br><span class="line"><span class="comment">#     min = heapq.heappop(priceList)</span></span><br><span class="line"><span class="comment">#     max = heapq.nlargest(1,priceList)[0]</span></span><br><span class="line"><span class="comment">#     priceList = delementOnheap(priceList,max)</span></span><br><span class="line"><span class="comment">#     if (max + min) &lt; w:</span></span><br><span class="line"><span class="comment">#         heapq.heappush(priceList,min+max)</span></span><br><span class="line"><span class="comment">#     elif (max + min) == w:</span></span><br><span class="line"><span class="comment">#         result.append(max + min)</span></span><br><span class="line"><span class="comment">#     else:</span></span><br><span class="line"><span class="comment">#         result.append(max)</span></span><br><span class="line"><span class="comment">#         heapq.heappush(priceList,min)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print(len(result)+1)</span></span><br></pre></td></tr></table></figure>
+<p> 双指针实现</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">m = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">s=[<span class="built_in">int</span>(<span class="built_in">input</span>()) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">s.sort()</span><br><span class="line"></span><br><span class="line">l,r = <span class="number">0</span>, n-<span class="number">1</span></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> l&lt;=r:</span><br><span class="line">    <span class="keyword">if</span> s[l]+s[r]&lt;=m:</span><br><span class="line">        l+=<span class="number">1</span></span><br><span class="line">    r-=<span class="number">1</span></span><br><span class="line">    ans+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#Lanqiao-OJ-532-%E7%BA%AA%E5%BF%B5%E5%93%81%E5%88%86%E7%BB%84"><span class="top-box-text">Lanqiao OJ 532 纪念品分组</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="top-box-text">题目描述</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E4%B8%80%E9%81%93%E9%A2%98%E5%81%9A%E4%BA%86%E4%B8%80%E6%95%B4%E5%A4%A9"><span class="top-box-text">一道题做了一整天</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/03/09/ji_zhu_wen_zhang/ji_zhu_wen_zhang_vscode_zhong_shi_yong_launch_json_dui_shu_ru_chong_ding_xiang_jin_xing_diao_shi/">
+          <h3 class="post-title">
+            下一篇：[技术文章]VSCode中是用launch.json对输入重定向进行调试
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[技术文章]VSCode中是用launch.json对输入重定向进行调试</title>
+<meta name="keywords" content="[技术文章]VSCode中是用launch.json对输入重定向进行调试, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="在 Visual Studio Code 中调试 Python 程序时，若需将 .in 文件重定向为标准输入，可通过以下配置实现：
+
+修改 launch.json 文件：将 console 设置为 &quot;integratedTermi">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[技术文章]VSCode中是用launch.json对输入重定向进行调试">
+<meta property="og:description" content="在 Visual Studio Code 中调试 Python 程序时，若需将 .in 文件重定向为标准输入，可通过以下配置实现：
+
+修改 launch.json 文件：将 console 设置为 &quot;integratedTermi">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[技术文章]VSCode中是用launch.json对输入重定向进行调试</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-03-09</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/">
+              技术文章
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>在 Visual Studio Code 中调试 Python 程序时，若需将 <code>.in</code> 文件重定向为标准输入，可通过以下配置实现：</p>
+<ol>
+<li><strong>修改 <code>launch.json</code> 文件</strong>：<br>将 <code>console</code> 设置为 <code>&quot;integratedTerminal&quot;</code>，使程序在集成终端运行，并添加 <code>&quot;args&quot;</code> 参数，利用终端的重定向功能。</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Python Debugger: Current File with Input&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;python&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;console&quot;</span><span class="punctuation">:</span> <span class="string">&quot;integratedTerminal&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&lt;&quot;</span><span class="punctuation">,</span> <span class="string">&quot;$&#123;fileDirname&#125;/input.in&quot;</span><span class="punctuation">]</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>步骤解释</strong>：</p>
+<ul>
+<li><p><strong><code>console</code>: “integratedTerminal”</strong><br>确保程序在集成终端中运行，以便处理 Shell 的重定向符号。</p>
+</li>
+<li><p><strong><code>args</code>: [“&lt;”, “input.in”]</strong><br>通过参数传递重定向符号和输入文件路径。虽然 <code>&lt;</code> 通常由 Shell 解析而非程序参数，但在终端中运行时，这会触发输入重定向。</p>
+</li>
+</ul>
+<p><strong>验证方法</strong>：</p>
+<ol>
+<li>保存 <code>.in</code> 文件到当前工作目录或指定路径。</li>
+<li>在 Python 脚本中使用 <code>input()</code> 或 <code>sys.stdin</code> 读取输入。</li>
+<li>启动调试，程序会自动从 <code>.in</code> 文件读取输入。</li>
+</ol>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>确保 <code>input.in</code> 文件路径正确，可使用 <code>$&#123;fileDirname&#125;</code> 变量指代当前文件所在目录。</li>
+<li>若路径问题导致文件未找到，请检查终端的工作目录（<code>cwd</code> 参数可显式设置）。</li>
+</ul>
+<p>通过以上配置，即可在调试时自动重定向输入文件，无需手动操作终端。</p>
+<p>若遇到 PowerShell 不兼容输入重定向符 <code>&lt;</code> 的问题，可通过以下步骤解决：</p>
+<hr>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a><strong>解决方案</strong></h3><h4 id="1-修改默认终端为-CMD"><a href="#1-修改默认终端为-CMD" class="headerlink" title="1. 修改默认终端为 CMD"></a><strong>1. 修改默认终端为 CMD</strong></h4><p>PowerShell 默认不支持 <code>&lt;</code> 重定向符，需切换为 <strong>CMD</strong> 终端：</p>
+<ol>
+<li>在 VSCode 中按下 <code>Ctrl+Shift+P</code>，输入 <strong>Terminal: Select Default Profile</strong>。</li>
+<li>选择 <strong>Command Prompt</strong>（CMD）。</li>
+</ol>
+<h4 id="2-调整-launch-json-配置"><a href="#2-调整-launch-json-配置" class="headerlink" title="2. 调整 launch.json 配置"></a><strong>2. 调整 <code>launch.json</code> 配置</strong></h4><p>移除 <code>&lt;</code> 符号，直接通过终端处理重定向：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.2.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Python: Current File with Input&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;python&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;program&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;file&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;console&quot;</span><span class="punctuation">:</span> <span class="string">&quot;integratedTerminal&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;args&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;fileDirname&#125;&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-确保输入文件路径正确"><a href="#3-确保输入文件路径正确" class="headerlink" title="3. 确保输入文件路径正确"></a><strong>3. 确保输入文件路径正确</strong></h4><p>将 <code>.in</code> 文件放在与 Python 脚本相同的目录（或调整路径），调试时终端会自动应用重定向。</p>
+<hr>
+<h3 id="关键配置解释"><a href="#关键配置解释" class="headerlink" title="关键配置解释"></a><strong>关键配置解释</strong></h3><ul>
+<li><p><strong><code>&quot;console&quot;: &quot;integratedTerminal&quot;</code></strong><br>强制使用集成终端（此时已切换为 CMD），CMD 支持 <code>&lt;</code> 重定向符号。</p>
+</li>
+<li><p><strong><code>&quot;cwd&quot;: &quot;$&#123;fileDirname&#125;&quot;</code></strong><br>确保终端的工作目录与脚本一致，避免路径错误。</p>
+</li>
+<li><p><strong>不在 <code>args</code> 中添加 <code>&lt;</code></strong><br>输入重定向由终端处理，而非作为参数传递给 Python。</p>
+</li>
+</ul>
+<hr>
+<h3 id="验证方法"><a href="#验证方法" class="headerlink" title="验证方法"></a><strong>验证方法</strong></h3><ol>
+<li><strong>保存配置</strong>：确保 <code>.in</code> 文件与脚本在同一目录。</li>
+<li><strong>调试代码</strong>：在脚本中使用 <code>input()</code> 或 <code>sys.stdin</code> 读取输入。</li>
+<li><strong>启动调试</strong>：程序会自动从 <code>.in</code> 文件读取输入，无需手动操作。</li>
+</ol>
+<hr>
+<h3 id="常见问题处理"><a href="#常见问题处理" class="headerlink" title="常见问题处理"></a><strong>常见问题处理</strong></h3><ul>
+<li><p><strong>文件路径错误</strong><br>若提示文件未找到，检查 <code>cwd</code> 是否设置为 <code>$&#123;fileDirname&#125;</code>，并确保 <code>.in</code> 文件路径正确。</p>
+</li>
+<li><p><strong>终端未切换</strong><br>若仍报错，确认默认终端已改为 CMD（右下角终端名称显示 <strong>1: cmd</strong>）。</p>
+</li>
+</ul>
+<hr>
+<p>通过上述配置，输入重定向可在 CMD 终端中正常工作，避开 PowerShell 的语法限制。</p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="top-box-text">解决方案</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE%E8%A7%A3%E9%87%8A"><span class="top-box-text">关键配置解释</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95"><span class="top-box-text">验证方法</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="top-box-text">常见问题处理</span></a></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/02/11/ji_zhu_wen_zhang/ji_zhu_wen_zhang_deepseek_jie_jue_bo_ke_fen_lei_ye_mian_bu_xian_shi_de_wen_ti/">
+          <h3 class="post-title">
+            下一篇：[技术文章]解决博客分类页面不显示的问题
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

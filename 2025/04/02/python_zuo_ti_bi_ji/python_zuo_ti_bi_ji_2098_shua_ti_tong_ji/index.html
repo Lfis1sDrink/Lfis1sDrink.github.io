@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[Python做题笔记]2098.刷题统计</title>
+<meta name="keywords" content="[Python做题笔记]2098.刷题统计, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="Lanqiao OJ 2098.刷题统计
+Lanqiao OJ 2098.刷题统计问题描述小明决定从下周一开始努力刷题准备蓝桥杯竞赛。他计划周一至周五每天做 a 道题目，周六和周日每天做 b 道题目。请你帮小明计算，按照计划他将在第几天实现">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[Python做题笔记]2098.刷题统计">
+<meta property="og:description" content="Lanqiao OJ 2098.刷题统计
+Lanqiao OJ 2098.刷题统计问题描述小明决定从下周一开始努力刷题准备蓝桥杯竞赛。他计划周一至周五每天做 a 道题目，周六和周日每天做 b 道题目。请你帮小明计算，按照计划他将在第几天实现">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[Python做题笔记]2098.刷题统计</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-04-02</span>
+        
+          <span>
+          <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="/tags/%E7%AD%BE%E5%88%B0%E9%A2%98/">
+              签到题
+                
+                  ，
+                
+              </a>
+            
+              <a href="/tags/%E8%93%9D%E6%A1%A5%E6%9D%AF2022%E7%9C%81%E8%B5%9B%E7%9C%9F%E9%A2%98/">
+              蓝桥杯2022省赛真题
+                
+              </a>
+            
+          </span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>Lanqiao OJ 2098.刷题统计</p>
+<h1 id="Lanqiao-OJ-2098-刷题统计"><a href="#Lanqiao-OJ-2098-刷题统计" class="headerlink" title="Lanqiao OJ 2098.刷题统计"></a>Lanqiao OJ 2098.刷题统计</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>小明决定从下周一开始努力刷题准备蓝桥杯竞赛。他计划周一至周五每天做 <code>a</code> 道题目，周六和周日每天做 <code>b</code> 道题目。请你帮小明计算，按照计划他将在第几天实现做题数大于等于 <code>n</code> 题?</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入一行包含三个整数 <code>a</code>，<code>b</code> 和 <code>n</code>。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出一个整数代表天数。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 20 99</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
+
+<h4 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h4><ul>
+<li>对于 50% 的评测用例，<code>1 ≤ a, b, n ≤ 10^6</code>。</li>
+<li>对于 100% 的评测用例，<code>1 ≤ a, b, n ≤ 10^18</code>。</li>
+</ul>
+<h4 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h4><ul>
+<li>最大运行时间：1s</li>
+<li>最大运行内存：256M</li>
+</ul>
+<hr>
+<h1 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h1><h2 id="比赛时这题的难点在于可能只能拿一半的分"><a href="#比赛时这题的难点在于可能只能拿一半的分" class="headerlink" title="比赛时这题的难点在于可能只能拿一半的分"></a>比赛时这题的难点在于可能只能拿一半的分</h2><p>下面的代码通过了<code>50%</code>的样例, 查看用例规模：<code>a,b,n &lt;= 10^18</code></p>
+<p>下载来用例一看，最恶心的一个用例是：<code>1 1 1000000000000000000</code> 老6啊</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a,b,n = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line">acc = <span class="number">0</span></span><br><span class="line">day = <span class="number">0</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line">week = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">while</span> acc &lt; n:</span><br><span class="line">    i = (i+<span class="number">1</span>) % <span class="number">7</span></span><br><span class="line">    <span class="keyword">if</span> week[i] &lt;= <span class="number">5</span>:</span><br><span class="line">        acc += a</span><br><span class="line">        day += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> week[i] &gt; <span class="number">5</span>:</span><br><span class="line">        acc += b</span><br><span class="line">        day += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(day)</span><br></pre></td></tr></table></figure>
+
+<p>那转变一下思路，怎么样换时间呢？</p>
+<p>再看一下题目，<code>a,b</code>确定后每周的工作量是确定的，那样直接用<code>n</code>对工作量取模，剩下的再模拟求解即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a,b,n = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">acc = <span class="number">0</span></span><br><span class="line">day = <span class="number">0</span></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line">week = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line">weekload = a*<span class="number">5</span>+b*<span class="number">2</span></span><br><span class="line">Week = n // weekload</span><br><span class="line">n = n - weekload*Week</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> acc &lt; n:</span><br><span class="line">    i = (i+<span class="number">1</span>) % <span class="number">7</span></span><br><span class="line">    <span class="keyword">if</span> week[i] &lt;= <span class="number">5</span>:</span><br><span class="line">        acc += a</span><br><span class="line">        day += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> week[i] &gt; <span class="number">5</span>:</span><br><span class="line">        acc += b</span><br><span class="line">        day += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Week*<span class="number">7</span>+day)</span><br></pre></td></tr></table></figure>
+
+<p><code>100%</code>通过了</p>
+
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#Lanqiao-OJ-2098-%E5%88%B7%E9%A2%98%E7%BB%9F%E8%AE%A1"><span class="top-box-text">Lanqiao OJ 2098.刷题统计</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="top-box-text">问题描述</span></a></li></ol></li><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="top-box-text">解题思路</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E6%AF%94%E8%B5%9B%E6%97%B6%E8%BF%99%E9%A2%98%E7%9A%84%E9%9A%BE%E7%82%B9%E5%9C%A8%E4%BA%8E%E5%8F%AF%E8%83%BD%E5%8F%AA%E8%83%BD%E6%8B%BF%E4%B8%80%E5%8D%8A%E7%9A%84%E5%88%86"><span class="top-box-text">比赛时这题的难点在于可能只能拿一半的分</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/04/01/hello_world/">
+          <h3 class="post-title">
+            下一篇：Hello World
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>[Python做题笔记]8道蓝桥杯签到题：拿下就有捐款证明</title>
+<meta name="keywords" content="[Python做题笔记]8道蓝桥杯签到题：拿下就有捐款证明, Jack&#39;s Blog | 小刘的博客">
+<meta name="description" content="Lanqiao OJ 1259.奇怪的捐赠问题描述本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。
+地产大亨 Q 先生临终的遗愿是：拿出 100 万元给 X 社区的居民抽奖，以稍慰藉心中愧疚。
+麻烦的是，他有个很奇怪">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="[Python做题笔记]8道蓝桥杯签到题：拿下就有捐款证明">
+<meta property="og:description" content="Lanqiao OJ 1259.奇怪的捐赠问题描述本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。
+地产大亨 Q 先生临终的遗愿是：拿出 100 万元给 X 社区的居民抽奖，以稍慰藉心中愧疚。
+麻烦的是，他有个很奇怪">
+
+<link rel="shortcut icon" href="https://hexo.io/icon/favicon-32x32.png">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body>
+    <div id="app" class="main">
+      
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://lfis1sdrink.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="https://lfis1sdrink.github.io">
+        <h1 class="site-title">Jack&#39;s Blog | 小刘的博客</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/categories" class="menu purple-link">
+        分类
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">[Python做题笔记]8道蓝桥杯签到题：拿下就有捐款证明</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2025-04-06</span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h1 id="Lanqiao-OJ-1259-奇怪的捐赠"><a href="#Lanqiao-OJ-1259-奇怪的捐赠" class="headerlink" title="Lanqiao OJ 1259.奇怪的捐赠"></a>Lanqiao OJ 1259.奇怪的捐赠</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。</p>
+<p>地产大亨 Q 先生临终的遗愿是：拿出 100 万元给 X 社区的居民抽奖，以稍慰藉心中愧疚。</p>
+<p>麻烦的是，他有个很奇怪的要求：</p>
+<p>100 万元必须被正好分成若干份（不能剩余）。每份必须是 7 的若干次方元。比如：</p>
+<ul>
+<li>1 元</li>
+<li>7 元</li>
+<li>49 元</li>
+<li>343 元</li>
+<li>…</li>
+</ul>
+<p>相同金额的份数不能超过 5 份。</p>
+<p>在满足上述要求的情况下，分成的份数越多越好！</p>
+<p>请你帮忙计算一下，最多可以分为多少份？</p>
+<h4 id="运行限制"><a href="#运行限制" class="headerlink" title="运行限制"></a>运行限制</h4><ul>
+<li>最大运行时间：1s</li>
+<li>最大运行内存：128M</li>
+</ul>
+<h4 id="统计信息"><a href="#统计信息" class="headerlink" title="统计信息"></a>统计信息</h4><ul>
+<li>总通过次数: 16731  </li>
+<li>总提交次数: 18873  </li>
+<li>通过率: 88.7%</li>
+</ul>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><h3 id="1-观察"><a href="#1-观察" class="headerlink" title="1.观察"></a>1.观察</h3><p>第一眼看上去似乎有点贪心的感觉，要满足这些要求：</p>
+<ul>
+<li>100 万元必须被正好分成若干份，不能剩余</li>
+<li>每份必须是 7 的若干次方元</li>
+<li>相同金额的份数不能超过 5 份</li>
+<li>分成的份数越多越好</li>
+</ul>
+<h3 id="2-思路"><a href="#2-思路" class="headerlink" title="2.思路"></a>2.思路</h3><p>是不是应该从1000000的左领域里找最大的7的倍数呢？打印一下7的幂看看：<br><code>res = [1, 7, 49, 343, 2401, 16807, 117649, 823543]</code><br>题目这样出，说明上面这些数字的倍数(最大5倍)相加，一定能正好加到1000000</p>
+<ol>
+<li><p>用Powershell算，从算(1+7+49+343+2401+16807)*5+117649挨个试呗</p>
+</li>
+<li><p>仔细想一想，题目的要求是求出a, b, c, d, e, f, g, h, 使得：<br>$$ 1000,000 &#x3D; a<em>7^7 + b</em>7^6 + c<em>7^5 + d</em>7^4 + e<em>7^3 + f</em>7^2 + g<em>7^1 + h</em>7^0 $$ 那直接把1000,000转为7进制不就好了吗？！</p>
+</li>
+</ol>
+<p>所以又回到进制转换了</p>
+<blockquote>
+<p>题解Ming L28：相同金额不能超过五，其他数的话（1000000不会）可能会存在remainder超过5的情况吧？</p>
+</blockquote>
+<blockquote>
+<p>被放养的研究生 L5回复Ming L28: 不会出现这种情况，比如5*1+5*7+5*49 &lt; 343,也就是说，前n-1项的系数都乘以5，也会小于第n项</p>
+</blockquote>
+<blockquote>
+<p>marimo L10 回复 被放养的研究生 L5: 是这样的，但是这怎么证明不会出现这种情况呢？</p>
+</blockquote>
+<blockquote>
+<p>lanqiao1700765592 L16 回复 marimo L10: 例如 2317 ，就会出现数位是6的情况，但是同时需要知道，一旦出现数位是6的情况，即使它的低位全都设置成5，也没办法将数位是6的那一位减1变成5，这样的话就会导致要想满足最大份数为5，无论怎么分配，都无法恰好分完总额，所以题目就会错误，因此，这里的总数一定会提前设置成不会存在某一数位是6的情况，也就是说如果总数是不确定的，这个方法就是错误的，但总数一旦确定，要么数位不会出现6，要么题目无解</p>
+</blockquote>
+<ol start="3">
+<li>那有了上面的思路，直接暴力套8层循环，每层<code>for x in range(0,6)</code>, 最后</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if 1000,000 == a*7^7 + b*7^6 + c*7^5 + d*7^4 + e*7^3 + f*7^2 + g*7^1 + h*7^0:</span><br><span class="line">  print(a+b+c+d+e+f+g+h)</span><br></pre></td></tr></table></figure>
+<p>不就行了吗！暴力不烧脑,解题刚刚好~</p>
+<h3 id="3-完整代码"><a href="#3-完整代码" class="headerlink" title="3.完整代码"></a>3.完整代码</h3><ol>
+<li>Powershell计算</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt;</span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">117649</span>*<span class="number">5</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">117649</span>*<span class="number">5</span>+<span class="number">16807</span>*<span class="number">5</span></span><br><span class="line"><span class="number">672280</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">117649</span>*<span class="number">5</span>+<span class="number">16807</span>*<span class="number">5</span>+<span class="number">2401</span>*<span class="number">5</span></span><br><span class="line"><span class="number">684285</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>+<span class="number">117649</span></span><br><span class="line"><span class="number">137257</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>+<span class="number">117649</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>+<span class="number">117649</span>)*<span class="number">5</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>)*<span class="number">5</span>       </span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>)*<span class="number">5</span>+<span class="number">117649</span>*<span class="number">4</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>)*<span class="number">5</span>+<span class="number">117649</span>*<span class="number">3</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>+<span class="number">7</span>+<span class="number">49</span>+<span class="number">343</span>+<span class="number">2401</span>+<span class="number">16807</span>)*<span class="number">5</span>+<span class="number">117649</span>*<span class="number">2</span></span><br><span class="line"></span><br><span class="line">......</span><br><span class="line"></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>+<span class="number">7</span>)*<span class="number">5</span>+<span class="number">117649</span>+<span class="number">823543</span>+<span class="number">16807</span>*<span class="number">3</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">49</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>)*<span class="number">5</span>+<span class="number">117649</span>+<span class="number">823543</span>+<span class="number">16807</span>*<span class="number">3</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">49</span>  </span><br><span class="line"><span class="number">999997</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; (<span class="number">1</span>)*<span class="number">5</span>+<span class="number">117649</span>+<span class="number">823543</span>+<span class="number">16807</span>*<span class="number">3</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">7</span></span><br><span class="line"><span class="number">1000004</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">1</span>+<span class="number">1</span>+<span class="number">1</span>+<span class="number">117649</span>+<span class="number">823543</span>+<span class="number">16807</span>*<span class="number">3</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">7</span></span><br><span class="line"><span class="number">1000002</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">1</span>+<span class="number">1</span>+<span class="number">117649</span>+<span class="number">823543</span>+<span class="number">16807</span>*<span class="number">3</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">7</span>    </span><br><span class="line"><span class="number">1000001</span></span><br><span class="line"><span class="built_in">PS</span> D:\Document\Code&gt; <span class="number">1</span>+<span class="number">117649</span>+<span class="number">823543</span>+<span class="number">16807</span>*<span class="number">3</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">2401</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">343</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">49</span>+<span class="number">7</span>  </span><br><span class="line"><span class="number">1000000</span></span><br></pre></td></tr></table></figure>
+<p>数一下 <code>1+117649+823543+16807*3+2401+2401+2401+343+343+343+49+49+49+7</code> 数了下共 <code>16</code> 个数字</p>
+<ol start="2">
+<li>用7进制表示 <code>100_0000</code></li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">convert_base</span>(<span class="params">num, base</span>):</span><br><span class="line">    res = <span class="string">&quot;&quot;</span></span><br><span class="line">    digits = <span class="string">&quot;0123456789ABCDEF&quot;</span></span><br><span class="line">    <span class="keyword">if</span> num == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;0&quot;</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> num &gt; <span class="number">0</span>:</span><br><span class="line">        res = digits[num % base] + res</span><br><span class="line">        num = num // base</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(convert_base(<span class="number">100_0000</span>,<span class="number">7</span>))</span><br><span class="line"><span class="comment"># 11333311</span></span><br><span class="line"><span class="comment"># 1+1+3+3+3+3+1+1 = 16</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>直接暴力算</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">summ=<span class="number">100_0000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> a <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">    <span class="keyword">for</span> b <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">            <span class="keyword">for</span> d <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">                <span class="keyword">for</span> e <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">                    <span class="keyword">for</span> f <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">                        <span class="keyword">for</span> g <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">                            <span class="keyword">for</span> h <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">6</span>):</span><br><span class="line">                                <span class="keyword">if</span> a+b*<span class="number">7</span>+c*<span class="number">49</span>+d*<span class="number">343</span>+e*<span class="number">2401</span>+f*<span class="number">16807</span>+g*<span class="number">117649</span>+h*<span class="number">823543</span>==summ:</span><br><span class="line">                                    <span class="built_in">print</span>(a+b+c+d+e+f+g+h)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Lanqiao-OJ-1446-ASC"><a href="#Lanqiao-OJ-1446-ASC" class="headerlink" title="Lanqiao OJ 1446.ASC"></a>Lanqiao OJ 1446.ASC</h1><h2 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h2><p>本题为填空题，只需要算出结果后，在代码中使用输出语句将所填结果输出即可。</p>
+<p>已知大写字母 A 的 ASCII 码为 65，请问大写字母 L 的 ASCII 码是多少？</p>
+<h4 id="运行限制-1"><a href="#运行限制-1" class="headerlink" title="运行限制"></a>运行限制</h4><ul>
+<li>最大运行时间：1s</li>
+<li>最大运行内存: 128M</li>
+</ul>
+<h4 id="总统计"><a href="#总统计" class="headerlink" title="总统计"></a>总统计</h4><ul>
+<li>总通过次数: 39682  </li>
+<li>总提交次数: 40752  </li>
+<li>通过率: 97.4%</li>
+</ul>
+<h4 id="难度"><a href="#难度" class="headerlink" title="难度"></a>难度</h4><ul>
+<li>简单</li>
+</ul>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h4><ul>
+<li>2021</li>
+<li>省赛</li>
+<li>单位换算</li>
+</ul>
+<h3 id="1-观察-1"><a href="#1-观察-1" class="headerlink" title="1.观察"></a>1.观察</h3><p>好像是送分的</p>
+<h3 id="2-思路-1"><a href="#2-思路-1" class="headerlink" title="2.思路"></a>2.思路</h3><p>送分那我得要</p>
+<h3 id="3-完整代码-1"><a href="#3-完整代码-1" class="headerlink" title="3.完整代码"></a>3.完整代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot; ABCDEFGHIJKLMN&quot;</span></span><br><span class="line"><span class="string">&quot;65..........76&quot;</span></span><br><span class="line"><span class="built_in">print</span>(<span class="number">76</span>)</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Lanqiao-OJ-19709-好数"><a href="#Lanqiao-OJ-19709-好数" class="headerlink" title="Lanqiao OJ 19709.好数"></a>Lanqiao OJ 19709.好数</h1><h2 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h2><p>一个整数如果按从低位到高位的顺序，奇数位 (个位、百位、万位 ⋯) 上的数字是奇数，偶数位 (十位、千位、十万位 ⋯) 上的数字是偶数，我们就称之为“好数”。</p>
+<p>给定一个正整数 <code>N</code>，请计算从 1 到 <code>N</code> 一共有多少个好数。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>一个整数 <code>N</code>。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>一个整数代表答案。</p>
+<h4 id="样例输入-1"><a href="#样例输入-1" class="headerlink" title="样例输入 1"></a>样例输入 1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">24</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输出-1"><a href="#样例输出-1" class="headerlink" title="样例输出 1"></a>样例输出 1</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输入-2"><a href="#样例输入-2" class="headerlink" title="样例输入 2"></a>样例输入 2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2024</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例输出-2"><a href="#样例输出-2" class="headerlink" title="样例输出 2"></a>样例输出 2</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">150</span><br></pre></td></tr></table></figure>
+
+<h4 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h4><p>对于第一个样例，24 以内的好数有：<br>1、3、5、7、9、21、23，共有 7 个。</p>
+<h4 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h4><p>对于 10% 的评测用例，<code>1 ≤ N ≤ 100</code>。</p>
+<p>对于 100% 的评测用例，<code>1 ≤ N ≤ 10^7</code>。</p>
+<h4 id="运行限制-2"><a href="#运行限制-2" class="headerlink" title="运行限制"></a>运行限制</h4><table>
+<thead>
+<tr>
+<th>语言</th>
+<th>最大运行时间</th>
+<th>最大运行内存</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C++</td>
+<td>1s</td>
+<td>256M</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1s</td>
+<td>256M</td>
+</tr>
+<tr>
+<td>Java</td>
+<td>3s</td>
+<td>512M</td>
+</tr>
+<tr>
+<td>Python3</td>
+<td>10s</td>
+<td>512M</td>
+</tr>
+<tr>
+<td>PyPy3</td>
+<td>3s</td>
+<td>512M</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>5s</td>
+<td>512M</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>5s</td>
+<td>512M</td>
+</tr>
+</tbody></table>
+<h4 id="总通过次数与提交统计"><a href="#总通过次数与提交统计" class="headerlink" title="总通过次数与提交统计"></a>总通过次数与提交统计</h4><ul>
+<li>总通过次数: 32862</li>
+<li>总提交次数: 36787</li>
+<li>通过率: 89.3%</li>
+</ul>
+<h4 id="难度-1"><a href="#难度-1" class="headerlink" title="难度"></a>难度</h4><p>简单</p>
+<h4 id="标签-1"><a href="#标签-1" class="headerlink" title="标签"></a>标签</h4><p>暴力, 枚举, 省赛, 2024</p>
+<h2 id="1-观察-2"><a href="#1-观察-2" class="headerlink" title="1.观察"></a>1.观察</h2><p><code>n</code>最大是<code>10^7</code>，开始写的循环挨个判断有点超时了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">n =<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">GoodNum</span>(<span class="params">reversed_n</span>):</span><br><span class="line">  i = <span class="number">0</span></span><br><span class="line">  flag = <span class="literal">True</span></span><br><span class="line">  <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(reversed_n):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">int</span>(reversed_n[i]) % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">      flag = <span class="literal">False</span></span><br><span class="line">    i += <span class="number">2</span></span><br><span class="line">  i = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(reversed_n):</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">int</span>(reversed_n[i]) % <span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">      flag = <span class="literal">False</span></span><br><span class="line">    i += <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> flag</span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,n+<span class="number">1</span>):</span><br><span class="line">    n2str = <span class="built_in">str</span>(i)</span><br><span class="line">    <span class="keyword">if</span> GoodNum(<span class="built_in">list</span>(<span class="built_in">reversed</span>(n2str))):</span><br><span class="line">        ans += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过90%的样例，剩一个超时了</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-思路-2"><a href="#2-思路-2" class="headerlink" title="2.思路"></a>2.思路</h2><p>转变思路，直接暴力大法，按照题目的意思打表，直接按题目的要求把所有的数字生成了，再数个数就好了</p>
+<h2 id="3-完整代码-2"><a href="#3-完整代码-2" class="headerlink" title="3.完整代码"></a>3.完整代码</h2><p>暴力不烧脑，时间刚刚好~</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">n =<span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"></span><br><span class="line">odd = [<span class="string">&#x27;1&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;5&#x27;</span>,<span class="string">&#x27;7&#x27;</span>,<span class="string">&#x27;9&#x27;</span>]</span><br><span class="line">even = [<span class="string">&#x27;0&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;4&#x27;</span>,<span class="string">&#x27;6&#x27;</span>,<span class="string">&#x27;8&#x27;</span>]</span><br><span class="line"><span class="comment"># 0也算偶数哦</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 管它3721先新建个集合，按规则叠7个for循环（每层又进行不了几次你怕啥啊？CPU利用起来呀）</span></span><br><span class="line">res = <span class="built_in">set</span>()</span><br><span class="line"><span class="keyword">for</span> b <span class="keyword">in</span> odd:</span><br><span class="line">   <span class="keyword">for</span> c <span class="keyword">in</span> even:</span><br><span class="line">      <span class="keyword">for</span> d <span class="keyword">in</span> odd:</span><br><span class="line">         <span class="keyword">for</span> e <span class="keyword">in</span> even:</span><br><span class="line">            <span class="keyword">for</span> f <span class="keyword">in</span> odd:</span><br><span class="line">               <span class="keyword">for</span> g <span class="keyword">in</span> even:</span><br><span class="line">                  <span class="keyword">for</span> h <span class="keyword">in</span> odd:</span><br><span class="line">                     res.add(<span class="built_in">int</span>(h))</span><br><span class="line">                     res.add(<span class="built_in">int</span>(g+h))</span><br><span class="line">                     res.add(<span class="built_in">int</span>(f+g+h))</span><br><span class="line">                     res.add(<span class="built_in">int</span>(e+f+g+h))</span><br><span class="line">                     res.add(<span class="built_in">int</span>(d+e+f+g+h))</span><br><span class="line">                     res.add(<span class="built_in">int</span>(c+d+e+f+g+h))</span><br><span class="line">                     res.add(<span class="built_in">int</span>(b+c+d+e+f+g+h))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如此这般所有满足规则( n &lt;= 10^7)的数字都生成完了，下面就选呗，整成列表好排序</span></span><br><span class="line">res = <span class="built_in">list</span>(res)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 排下序就直接遍历呗</span></span><br><span class="line">res.sort()</span><br><span class="line"></span><br><span class="line">i = <span class="number">0</span></span><br><span class="line">cnt = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> res[i] &lt;= n:</span><br><span class="line">   <span class="comment"># print(res[i])</span></span><br><span class="line">   cnt += <span class="number">1</span></span><br><span class="line">   i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(cnt)</span><br></pre></td></tr></table></figure>
+<p><code>100%</code>通过了</p>
+<h1 id="Lanqiao-OJ-197-abc"><a href="#Lanqiao-OJ-197-abc" class="headerlink" title="Lanqiao OJ 197.abc"></a>Lanqiao OJ 197.abc</h1><h2 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h2><h4 id="输入格式-1"><a href="#输入格式-1" class="headerlink" title="输入格式"></a>输入格式</h4><h2 id="1-观察-3"><a href="#1-观察-3" class="headerlink" title="1.观察"></a>1.观察</h2><h2 id="2-思路-3"><a href="#2-思路-3" class="headerlink" title="2.思路"></a>2.思路</h2><h2 id="3-完整代码-3"><a href="#3-完整代码-3" class="headerlink" title="3.完整代码"></a>3.完整代码</h2>
+        </div>
+          
+        <div class="top-div">
+          <ol class="top-box"><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#Lanqiao-OJ-1259-%E5%A5%87%E6%80%AA%E7%9A%84%E6%8D%90%E8%B5%A0"><span class="top-box-text">Lanqiao OJ 1259.奇怪的捐赠</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="top-box-text">问题描述</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="top-box-text">解题思路</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1-%E8%A7%82%E5%AF%9F"><span class="top-box-text">1.观察</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#2-%E6%80%9D%E8%B7%AF"><span class="top-box-text">2.思路</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#3-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="top-box-text">3.完整代码</span></a></li></ol></li></ol></li><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#Lanqiao-OJ-1446-ASC"><span class="top-box-text">Lanqiao OJ 1446.ASC</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-1"><span class="top-box-text">问题描述</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#1-%E8%A7%82%E5%AF%9F-1"><span class="top-box-text">1.观察</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#2-%E6%80%9D%E8%B7%AF-1"><span class="top-box-text">2.思路</span></a></li><li class="top-box-item top-box-level-3"><a class="top-box-link" href="#3-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-1"><span class="top-box-text">3.完整代码</span></a></li></ol></li></ol></li><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#Lanqiao-OJ-19709-%E5%A5%BD%E6%95%B0"><span class="top-box-text">Lanqiao OJ 19709.好数</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-2"><span class="top-box-text">问题描述</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#1-%E8%A7%82%E5%AF%9F-2"><span class="top-box-text">1.观察</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#2-%E6%80%9D%E8%B7%AF-2"><span class="top-box-text">2.思路</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#3-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-2"><span class="top-box-text">3.完整代码</span></a></li></ol></li><li class="top-box-item top-box-level-1"><a class="top-box-link" href="#Lanqiao-OJ-197-abc"><span class="top-box-text">Lanqiao OJ 197.abc</span></a><ol class="top-box-child"><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0-3"><span class="top-box-text">问题描述</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#1-%E8%A7%82%E5%AF%9F-3"><span class="top-box-text">1.观察</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#2-%E6%80%9D%E8%B7%AF-3"><span class="top-box-text">2.思路</span></a></li><li class="top-box-item top-box-level-2"><a class="top-box-link" href="#3-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81-3"><span class="top-box-text">3.完整代码</span></a></li></ol></li></ol>
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2025/04/04/python_zuo_ti_bi_ji/python_zuo_ti_bi_ji_lan_qiao_bei_15th_sheng_sai_yan_zu_ti_mu_jie_xi/">
+          <h3 class="post-title">
+            下一篇：[Python做题笔记]蓝桥杯15th省赛研组题目解析
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/Lfis1sDrink" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+
